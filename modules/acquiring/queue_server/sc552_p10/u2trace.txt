@@ -1,0 +1,3298 @@
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 26 Mar 2025 09:02:39 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 575
+Connection: keep-alive
+x-envoy-upstream-service-time: 185
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"9","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"10","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 26 Mar 2025 09:02:39 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 24
+content-disposition: attachment; filename=RDLR.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 26 Mar 2025 09:02:40 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 20
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RRDK.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 26 Mar 2025 09:02:40 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 32
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 27 Mar 2025 14:22:11 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 109
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"11","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"12","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 27 Mar 2025 14:22:11 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 25
+content-disposition: attachment; filename=RDLR.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 27 Mar 2025 14:22:11 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 21
+content-disposition: attachment; filename=RRDK.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 27 Mar 2025 14:22:11 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 20
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:18:53 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 119
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"13","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"14","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:18:53 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 21
+content-disposition: attachment; filename=RDLR.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:18:53 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 16
+content-disposition: attachment; filename=RRDK.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:18:53 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 15
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=PFLS.BAK
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:19:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 94
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"15","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"16","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:19:01 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 23
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RDLR.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:19:01 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 23
+content-disposition: attachment; filename=RRDK.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:19:01 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 15
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:49:03 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 106
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"17","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"18","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:49:03 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 22
+content-disposition: attachment; filename=RDLR.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:49:03 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 38
+content-disposition: attachment; filename=RRDK.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:49:04 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 19
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:58:07 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 97
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"19","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"20","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:58:07 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 20
+content-disposition: attachment; filename=RDLR.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:58:07 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 24
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RRDK.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 12:58:07 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 20
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 13:03:33 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 96
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"21","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"22","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 13:03:33 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 19
+content-disposition: attachment; filename=RDLR.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 13:03:33 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 20
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RRDK.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 31 Mar 2025 13:03:33 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 22
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:05:03 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 125
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"23","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"24","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:05:03 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 27
+content-disposition: attachment; filename=RDLR.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:05:03 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 21
+content-disposition: attachment; filename=RRDK.P
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:05:03 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 19
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:24:39 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 116
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"25","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"26","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:24:39 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 17
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RDLR.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:24:40 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 23
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RRDK.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 04 Apr 2025 13:24:40 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 24
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=PFLS.BAK
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 09 Jun 2025 07:56:55 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 576
+Connection: keep-alive
+x-envoy-upstream-service-time: 86
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"27","FILES":[{"FILE_HASH":"325E72D493A332AACBDCF3EE6D6EDF0606D30AE6","FILE_NAME":"RDLR.P","FILE_SIZE":"20"},{"FILE_HASH":"8A145A0E083B3E88D2C121294E2A245DD4F5C1BA","FILE_NAME":"RRDK.P","FILE_SIZE":"256"},{"FILE_HASH":"37C7BAAD55F02D9097DB3AB761F6CDD3AB6A6AB7","FILE_NAME":"PFLS.BAK","FILE_SIZE":"24"}],"TARGET":"TERMINAL"}},{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"28","FILES":[{"FILE_HASH":"BB09BCA1B45FC17EF2CE8EFE0F9519AFE15A285D","FILE_NAME":"UPDATE.TXT","FILE_SIZE":"49"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RDLR.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 09 Jun 2025 07:56:55 GMT
+Content-Type: application/octet-stream
+Content-Length: 20
+Connection: keep-alive
+x-envoy-upstream-service-time: 15
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RDLR.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=RRDK.P&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 09 Jun 2025 07:56:55 GMT
+Content-Type: application/octet-stream
+Content-Length: 256
+Connection: keep-alive
+x-envoy-upstream-service-time: 23
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=RRDK.P
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=PFLS.BAK&terminalSN=L40130003703 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 09 Jun 2025 07:56:55 GMT
+Content-Type: application/octet-stream
+Content-Length: 24
+Connection: keep-alive
+x-envoy-upstream-service-time: 30
+content-disposition: attachment; filename=PFLS.BAK
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"0000000000000000000000000000000000000000","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 23 Jul 2025 14:12:31 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 1031
+Connection: keep-alive
+x-envoy-upstream-service-time: 89
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[{"CMD":"CHECK_FILES","DETAILS":{"CMD_ID":"30","FILES":[{"FILE_HASH":"787F3FF359B4D23B11F0A65C18DB5AE8D5252063","FILE_NAME":"upnixmn.out.new","FILE_SIZE":"1955522"},{"FILE_HASH":"834E1766C31D7BB6CB904FC47E724AE91D405E59","FILE_NAME":"sb_pilot.new","FILE_SIZE":"992144"},{"FILE_HASH":"263314F696BD32E04192CF1D91A3F61A2347530F","FILE_NAME":"posScheduler.new","FILE_SIZE":"987702"},{"FILE_HASH":"BD3C0F97BF870AA7556AB2A864742F3F6A708DBA","FILE_NAME":"OPT0.R","FILE_SIZE":"24298"},{"FILE_HASH":"97DACE40107CB963868E242D8CFD9C4A64E5505A","FILE_NAME":"OPT1.R","FILE_SIZE":"39560"},{"FILE_HASH":"7B824D983DB841E3B9865D06AF799DE4377C2372","FILE_NAME":"OPT3.R","FILE_SIZE":"1844"},{"FILE_HASH":"E289892F5730E335D9E1E194F76AFE3D40566B76","FILE_NAME":"OPT4.R","FILE_SIZE":"160"},{"FILE_HASH":"7EB429061B93A7D93CEFAD9CF699F7F1A7AEC2A7","FILE_NAME":"findcom.ini","FILE_SIZE":"439"},{"FILE_HASH":"9D6AF9F177411C2CA8A0E97BA5201BB0A77CC896","FILE_NAME":"u2updater.new","FILE_SIZE":"1533628"}],"TARGET":"ECR"}}]}}
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=upnixmn.out.new&terminalSN=L40130003703&ECR=1, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=upnixmn.out.new&terminalSN=L40130003703&ECR=1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 23 Jul 2025 14:12:31 GMT
+Content-Type: application/octet-stream
+Content-Length: 1955522
+Connection: keep-alive
+x-envoy-upstream-service-time: 42
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=upnixmn.out.new
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=sb_pilot.new&terminalSN=L40130003703&ECR=1, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=sb_pilot.new&terminalSN=L40130003703&ECR=1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 23 Jul 2025 14:12:32 GMT
+Content-Type: application/octet-stream
+Content-Length: 992144
+Connection: keep-alive
+x-envoy-upstream-service-time: 32
+content-disposition: attachment; filename=sb_pilot.new
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=posScheduler.new&terminalSN=L40130003703&ECR=1, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=posScheduler.new&terminalSN=L40130003703&ECR=1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 23 Jul 2025 14:12:33 GMT
+Content-Type: application/octet-stream
+Content-Length: 987702
+Connection: keep-alive
+x-envoy-upstream-service-time: 32
+pragma: public
+cache-control: private
+content-disposition: attachment; filename=posScheduler.new
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=OPT0.R&terminalSN=L40130003703&ECR=1, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=OPT0.R&terminalSN=L40130003703&ECR=1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 23 Jul 2025 14:12:33 GMT
+Content-Type: application/octet-stream
+Content-Length: 24298
+Connection: keep-alive
+x-envoy-upstream-service-time: 17
+content-disposition: attachment; filename=OPT0.R
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=OPT1.R&terminalSN=L40130003703&ECR=1, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=OPT1.R&terminalSN=L40130003703&ECR=1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 23 Jul 2025 14:12:33 GMT
+Content-Type: application/octet-stream
+Content-Length: 39560
+Connection: keep-alive
+x-envoy-upstream-service-time: 25
+content-disposition: attachment; filename=OPT1.R
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+Connecting to http://185.157.96.41:80/upos2-web/getFile/block1?name=OPT3.R&terminalSN=L40130003703&ECR=1, result=0
+
+Sent:
+-----
+GET /upos2-web/getFile/block1?name=OPT3.R&terminalSN=L40130003703&ECR=1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+
+
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 23 Jul 2025 14:12:33 GMT
+Content-Type: application/octet-stream
+Content-Length: 1844
+Connection: keep-alive
+x-envoy-upstream-service-time: 20
+content-disposition: attachment; filename=OPT3.R
+pragma: public
+cache-control: private
+Server: SOWA
+Accept-Ranges: bytes
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:19:52 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 76
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:38:16 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 76
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:40:08 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 89
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:41:35 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 83
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:44:45 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 90
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:47:30 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 87
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:47:57 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 82
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:49:01 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 93
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:51:37 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 76
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 08:52:20 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 84
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:34:16 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 70
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:35:25 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 80
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:36:17 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 68
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:37:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 88
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:38:23 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 76
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:39:27 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 91
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:41:11 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 94
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:41:49 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 80
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:42:43 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 74
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:43:36 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 73
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 09:46:33 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 86
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 24 Jul 2025 13:47:31 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 84
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 25 Jul 2025 08:27:32 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 73
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Fri, 25 Jul 2025 10:57:52 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 87
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 11:57:12 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 89
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 11:57:15 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 97
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 11:58:53 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 84
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 11:59:15 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 81
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:00:07 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 81
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:02:29 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 66
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:15:42 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 76
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:22:34 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 511
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:22:43 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 76
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:41:05 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 63
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:43:02 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 78
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:44:08 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 70
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:44:29 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 68
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:45:24 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 66
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:45:38 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 64
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:45:58 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 83
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:47:34 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 70
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:48:08 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 77
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:48:42 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 73
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:50:05 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 73
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Mon, 28 Jul 2025 12:52:03 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 83
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Tue, 29 Jul 2025 14:38:57 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 88
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Tue, 29 Jul 2025 14:40:48 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 93
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Wed, 30 Jul 2025 06:15:12 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 87
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 31 Jul 2025 11:49:21 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 127
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 31 Jul 2025 11:49:24 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 84
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 31 Jul 2025 11:51:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 82
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 31 Jul 2025 11:52:10 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 79
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 31 Jul 2025 11:59:11 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 93
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 31 Jul 2025 14:39:47 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 81
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:L40130003703, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 248
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"L40130003703","SN_OLD":"L40130003703","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 200 OK
+Date: Thu, 31 Jul 2025 14:40:11 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 39
+Connection: keep-alive
+x-envoy-upstream-service-time: 97
+Server: SOWA
+Accept-Ranges: bytes
+{"success":true,"body":{"COMMANDS":[]}}
+
+Disconnected.
+
+
+
+SN:
+, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 228
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"
+","SN_OLD":"
+","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 502 Bad Gateway
+
+
+Disconnected.
+
+
+
+SN:
+, MODEL:UNKNOWN, ECR:
+Connecting to http://185.157.96.41:80/upos2-web/block1, result=0
+
+Sent:
+-----
+POST /upos2-web/block1 HTTP/1.1
+Host: 185.157.96.41
+Connection: keep-alive
+User-Agent: TERMINAL
+Accept: application/json, application/*+json
+Content-type: application/json;charset=UTF-8
+Content-Length: 228
+
+{"REPLIES":[{"CONF_HASH":"0000000000000000000000000000000000000000","ECR_HASH":"ED3F3FE4A74D29F86E006EC358FD1236A8FDC604","KCV_KLK":"000000","MODEL_A":"LINUX","MODEL_T":"UNKNOWN","SN":"
+","SN_OLD":"
+","VERSION_A":"30.26.10"}]}
+
+Received:
+---------
+HTTP/1.1 502 Bad Gateway
+
+
+Disconnected.
+
+
+
