@@ -2,6 +2,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from fastapi.security import HTTPBearer
 
+from scripts.drop_tables_db import drop_tables_db
 from scripts.set_and_run_modules_services import set_and_run_modules_services
 from scripts.set_terminal_functions_db import set_terminal_functions_db
 from scripts.set_user_functions_map_db import set_user_functions_map_db
@@ -11,6 +12,7 @@ app = FastAPI()
 
 @app.on_event("startup")
 async def startup():
+    # await drop_tables_db()
     await set_users_db()
     await set_terminal_functions_db()
     await set_user_functions_map_db()

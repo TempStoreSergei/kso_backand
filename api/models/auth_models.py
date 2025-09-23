@@ -67,6 +67,7 @@ class TerminalFunctions(Base):
     )
     function_name: Mapped[str] = mapped_column(String, unique=True)
     endpoint_name: Mapped[str] = mapped_column(String, unique=True)
+    module_name: Mapped[str] = mapped_column(String, nullable=True)
 
     users = relationship(
         "UserFunctionsMap",

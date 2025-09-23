@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 
 
-class ChangeUserPasswordRequestDTO(BaseModel):
+class ChangePasswordRequestDTO(BaseModel):
     old_password: str
     new_password: str
 
 
-class ChangeUserPasswordResponseDTO(BaseModel):
+class ChangePasswordResponseDTO(BaseModel):
     detail: str
