@@ -1,5 +1,6 @@
 from fiscal_driver import driver, fn
 from configs import error_codes
+from modules.fiscal.queue_server.configs import TERMINAL_SERIAL_NUMBER
 from utils import parse_kkt_report, print_km_status
 
 
@@ -215,6 +216,7 @@ def create_check_after_payment(
             }
 
     driver.change_is_printing(is_printing)
+    fn.set_tag(1036, TERMINAL_SERIAL_NUMBER)
 
     # закрываем чек
     response = fn.close_check(

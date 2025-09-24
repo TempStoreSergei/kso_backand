@@ -39,3 +39,5 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 
 LOKI_URL='http://192.168.0.247:3100/loki/api/v1/push'
+
+TERMINAL_SERIAL_NUMBER='N24176'

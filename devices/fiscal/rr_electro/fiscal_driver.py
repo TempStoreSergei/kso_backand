@@ -208,6 +208,12 @@ class FiscalStorage(BaseFiscal):
         """Формирование и печать X-отчета."""
         return self.driver.PrintReportWithoutCleaning()
 
+    def set_tag(self, tag_number, tag_value):
+        self.driver.TagNumber = tag_number
+        self.driver.TagType = 7
+        self.driver.TagValueStr = tag_value
+        self.driver.FNSendTagOperation()
+
     # def set_new_tags(self, summ_total):
     #     self.driver.TagNumber = 1011
     #     self.driver.TagType = 7
