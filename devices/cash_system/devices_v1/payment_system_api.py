@@ -291,6 +291,7 @@ class PaymentSystemAPI:
                 'message': 'Устройство bill acceptor переполнено',
             }
 
+        amount = amount * 100
         logger.info(f"Начат прием на сумму {amount} рублей")
 
         self.target_amount = amount

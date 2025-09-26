@@ -2,29 +2,23 @@ from typing import TYPE_CHECKING
 
 from fastapi import Depends
 
-from api.dependencies.get_current_user import get_current_user
 from api.dependencies.redis_connection import get_redis, pubsub_command_util
 from modules.cash_system.configs.settings import cash_system_settings
-from modules.cash_system.DTO.bill_acceptor.test_bill_accept_response_dto import \
-    TestBillAcceptResponseDTO
+from modules.cash_system.DTO.bill_acceptor.reset_bill_count_response_dto import \
+    ResetBillCountResponseDTO
 
 if TYPE_CHECKING:
-    from api.models.auth_models import User
     from redis.asyncio import Redis
 
 
-async def test_bill_accept(
-    amount: int,
-    user: "User" = Depends(get_current_user),
+async def reset_bill_count(
     redis: "Redis" = Depends(get_redis),
 ):
-    command = {'command': 'start_accepting_payment', 'data': {
-        'amount': amount
-    }}
+    command = {'command': 'bill_acceptor_reset_bill_count'}
     response = await pubsub_command_util(
         redis, cash_system_settings.PAYMENT_SYSTEM_CASH_CHANNEL, command
     )
-    return TestBillAcceptResponseDTO(
+    return ResetBillCountResponseDTO(
         status=response.get('success'),
         detail=response.get('message'),
     )
