@@ -20,7 +20,9 @@ async def payment_system_cash_commands(command_data, api):
         response_data = await api.stop_accepting_payment()
 
     elif command == 'test_dispense_change':
-        response_data = await api.test_dispense_change()
+        is_bill = data.get('is_bill')
+        is_coin = data.get('is_coin')
+        response_data = await api.test_dispense_change(is_bill, is_coin)
 
     elif command == 'bill_acceptor_set_max_bill_count':
         value = data.get('value')
@@ -47,6 +49,17 @@ async def payment_system_cash_commands(command_data, api):
 
     elif command == 'bill_dispenser_reset_bill_count':
         response_data = await api.bill_dispenser_reset_bill_count()
+
+    elif command == 'coin_system_add_coin_count':
+        value = data.get('value')
+        denomination = data.get('denomination')
+        response_data = await api.coin_system_add_coin_count(value, denomination)
+
+    elif command == 'coin_system_status':
+        response_data = await api.coin_system_status()
+
+    elif command == 'coin_system_cash_collection':
+        response_data = await api.coin_system_cash_collection()
 
     else:
         response_data = {}

@@ -30,7 +30,7 @@ async def command_pinpad_channel_p12(command):
         # Получаем параметры процесса из команды
         command_name = command.get('command')
         command_num = OPERATION_TYPE_MAP.get(command_name)
-        amount = command.get('amount', None)
+        amount = command.get('data', {}).get('amount', None)
         # Запуск процесса
         if amount:
             result = subprocess.run([PATH_TO_SB_PILOT, command_num, amount], capture_output=True, text=True)

@@ -140,10 +140,77 @@ class PaymentSystemAPI:
         }
 
     @redis_error_handler("Тест выдачи сдачи прошел успешно")
-    async def test_dispense_change(self):
-        self.upper_box_value = int(await self.redis.get('bill_dispenser:upper_lvl'))
-        self.lower_box_value = int(await self.redis.get('bill_dispenser:lower_lvl'))
-        await self.dispense_change(self.upper_box_value + self.lower_box_value)
+    async def test_dispense_change(self, is_bill: bool, is_coin: bool):
+        """Тест выдачи сдачи."""
+        try:
+            if is_coin:
+                await self.hopper.enable()
+                await self.hopper.command('PAYOUT_AMOUNT', {
+                    'amount': 100,
+                    'country_code': 'RUB',
+                    'test': False
+                })
+            if is_bill:
+                self.upper_box_value = int(await self.redis.get('bill_dispenser:upper_lvl'))
+                self.lower_box_value = int(await self.redis.get('bill_dispenser:lower_lvl'))
+                await self.dispense_change(self.upper_box_value + self.lower_box_value)
+        except Exception as e:
+            return {
+                'success': False,
+                'message': f"Ошибка при выдаче сдачи: {e}"
+            }
+
+    async def coin_system_add_coin_count(self, value: int, denomination: int):
+        """Добавление монет определенного уровня."""
+        try:
+            await self.hopper.enable()
+            await self.hopper.command('SET_DENOMINATION_LEVEL', {
+                'value': value,
+                'denomination': denomination,
+                'country_code': 'RUB',
+            })
+            logger.info('Добавление монет прошло успешно')
+            return {
+                'success': True,
+                'message': 'Добавление монет прошло успешно',
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'message': f"Ошибка при работе с hopper: {e}"
+            }
+
+
+    async def coin_system_status(self):
+        """Получение статуса hopper (уровни монет)."""
+        try:
+            await self.hopper.enable()
+            status = await self.hopper.command('GET_ALL_LEVELS')
+            return {
+                'success': True,
+                'data': status,
+                'message': 'Статус hopper получен успешно',
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'message': f"Ошибка при работе с hopper: {e}"
+            }
+
+    async def coin_system_cash_collection(self):
+        """Инкассация."""
+        try:
+            await self.hopper.enable()
+            await self.hopper.command('EMPTY_ALL')
+            return {
+                'success': True,
+                'message': 'Инкассация hopper запущена успешно',
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'message': f"Ошибка при инкассации hopper: {e}"
+            }
 
 
     async def init_devices(self):
