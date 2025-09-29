@@ -10,6 +10,7 @@ OPERATION_TYPE_MAP = {
     'receipt_report': '7',
     'cancel_pay': '8',
     'open_menu': '11',
+    'check_connect_old': '26',
     'check_connect': '36',
 }
 PATH_TO_SB_PILOT = './sc552_p12/sb_pilot'
@@ -22,7 +23,7 @@ async def command_pinpad_channel_p12(command):
         "command_id": command_id,
         "success": False,
         "message": "",
-        "data": {}
+        "data": None
     }
     sb_pilot_action = SBPilotAction(command_id)
 
@@ -41,7 +42,7 @@ async def command_pinpad_channel_p12(command):
         logger.info(f"Output: {stdout}")
 
         if command_name == 'start_pay':  # Оплата
-            sb_pilot_action.start_pay(stdout)
+            response = sb_pilot_action.start_pay(stdout)
 
         elif command_name == "refund_pay":  # Возврат
             response = sb_pilot_action.refund_pay(stdout)
@@ -52,17 +53,17 @@ async def command_pinpad_channel_p12(command):
         elif command_name == "cancel_pay":  # Отмена платежа
             response = sb_pilot_action.cancel_pay(stdout)
 
-        elif command_name == "open_menu":
+        elif command_name == "open_menu": # Открыть технологическое меню
             response = sb_pilot_action.open_menu()
 
-        elif command_name == "check_connect":  # Проверка подключения
+        elif command_name in {"check_connect", "check_connect_old"}:  # Проверка подключения
             response = sb_pilot_action.check_connect(stdout)
 
         else:
             # Неизвестный тип операции
             response.update({
                 "success": False,
-                "message": "Команда выполнена",
+                "message": "Неизвестный тип операции",
                 "data": {"stdout": stdout, "type": "unknown"}
             })
 

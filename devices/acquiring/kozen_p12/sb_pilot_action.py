@@ -11,7 +11,7 @@ class SBPilotAction():
         "command_id": self.command_id,
         "success": False,
         "message": "",
-        "data": {}
+        "data": None
     }
 
     def start_pay(self, stdout):
@@ -25,6 +25,9 @@ class SBPilotAction():
             error_msg = 'Ошибка при совершении платежа'
             logger.info(error_msg)
             send_to_ws(event='errorPayment', detail=error_msg)
+
+        self.response.update({'success': True, 'message': 'Запрос отправлен успешно'})
+        return self.response
 
     def refund_pay(self, stdout):
         if "return:0" in stdout:
@@ -41,7 +44,6 @@ class SBPilotAction():
             self.response.update({
                 "success": False,
                 "message": error_msg,
-                "data": {"type": "return", "stdout": stdout}
             })
         return self.response
 
@@ -65,7 +67,6 @@ class SBPilotAction():
             self.response.update({
                 "success": False,
                 "message": error_msg,
-                "data": {"type": "reconciliation", "stdout": stdout}
             })
         return self.response
 
@@ -85,7 +86,6 @@ class SBPilotAction():
             self.response.update({
                 "success": False,
                 "message": error_msg,
-                "data": {"type": "cancel", "stdout": stdout}
             })
         return self.response
 
@@ -100,12 +100,10 @@ class SBPilotAction():
             self.response.update({
                 "success": True,
                 "message": "Устройство доступно",
-                "data": None,
             })
         else:
             self.response.update({
                 "success": False,
                 "message": "Устройство недоступно",
-                "data": None,
             })
         return self.response
