@@ -1,14 +1,12 @@
 [Unit]
-Description=SBPay p12
+Description=Fake Idle Service
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/fsadmin/kso_modules/fiscal/rr_electro/.venv/bin/python /home/fsadmin/kso_modules/fiscal/rr_electro/run.py
-Restart=on-failure
-WorkingDirectory=/home/fsadmin/kso_modules/fiscal/rr_electro
-User=fsadmin
-Environment="PYTHONUNBUFFERED=1"
+ExecStart=/usr/bin/python3 /home/ivan/fake_service.py
+Restart=always
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
+

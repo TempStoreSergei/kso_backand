@@ -4,17 +4,14 @@ from fastapi import Depends
 
 from modules.cash_system.DTO.status_system_response_dto import BillAcceptorStatusResponseDTO, \
     BillDispenserStatusResponseDTO, StatusSystemResponseDTO
-from api.dependencies.get_current_user import get_current_user
 from api.dependencies.redis_connection import get_redis, pubsub_command_util
 from modules.cash_system.configs.settings import cash_system_settings
 
 if TYPE_CHECKING:
-    from api.models.auth_models import User
     from redis.asyncio import Redis
 
 
 async def status_system(
-    user: "User" = Depends(get_current_user),
     redis: "Redis" = Depends(get_redis),
 ):
     command_bill_acceptor_status = {'command': 'bill_acceptor_status'}
