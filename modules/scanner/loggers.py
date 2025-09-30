@@ -1,4 +1,4 @@
 from api.configs.loggers import get_logger
 
 
-logger = get_logger("ACQUIRING")
+logger = get_logger("Сканер")
