@@ -1,15 +1,13 @@
 import asyncio
+import base64
 from typing import AsyncIterator
 
 import aioserial
 import httpx
-from redis.asyncio import Redis
 
-from funcs import find_serial_device, get_sdn_hosts, item_without_basket_process, \
-    default_item_process, find_serial_device_by_name, only_baskets_process, \
-    del_item_fire_mark_process
-from config import REDIS_HOST, REDIS_PORT
+from funcs import find_serial_device, find_serial_device_by_name
 from loggers import logger
+from config import API_URL
 
 
 async def read_barcode(device_path: str) -> AsyncIterator[str]:
@@ -36,10 +34,7 @@ async def read_barcode(device_path: str) -> AsyncIterator[str]:
             # Если сканер отключили, порт пропадет
             if "No such file or directory" in str(e):
                 logger.error("Сканер был отключен. Ожидание нового подключения...")
-                # Не нужно возвращаться в `main`, можно просто подождать здесь.
                 await asyncio.sleep(5)
-                # Выходим из внутреннего цикла, чтобы внешний цикл попробовал найти устройство заново (если main переписан)
-                # В текущей реализации main, лучше просто ждать.
                 continue 
 
         except Exception as e:
@@ -47,36 +42,26 @@ async def read_barcode(device_path: str) -> AsyncIterator[str]:
         
         await asyncio.sleep(5) # Пауза перед попыткой переподключения
 
-async def monitor_barcodes(serial_device_path: str, redis: Redis) -> None:
+async def monitor_barcodes(serial_device_path: str) -> None:
     """Мониторит штрих-коды и обрабатывает их."""
     logger.info("Мониторинг штрих-кодов запущен")
-    sdn_hosts = await get_sdn_hosts()
     try:
         async for barcode in read_barcode(serial_device_path):
-            try:
-                logger.info(f'Баракод: {repr(barcode)}')
-                async with httpx.AsyncClient() as client:
-                    item_without_basket = await redis.get("item_without_basket")
-                    pay_in_progress = await redis.get("pay_in_progress")
-                    only_baskets = await redis.get('only_baskets')
-                    del_item_fire_mark = await redis.get('del_item_fire_mark')
-                    if pay_in_progress:
-                        logger.info(
-                            "Корзина уже находится в процессе оплаты, нельзя сканировать товары."
-                        )
-                        await asyncio.sleep(1)
-                    elif item_without_basket:
-                        await item_without_basket_process(barcode, redis, client, sdn_hosts)
-                    elif only_baskets:
-                        await only_baskets_process(barcode, redis, client)
-                    elif del_item_fire_mark:
-                        await del_item_fire_mark_process(barcode, redis, client, del_item_fire_mark)
-                    else:
-                        await default_item_process(barcode, redis, client, sdn_hosts)
-                    continue
 
-            except Exception as e:
-                logger.error(f"Критическая ошибка в monitor_barcodes: {e}")
+            logger.info(f'Баракод: {repr(barcode)}')
+            encoded = base64.b64encode(barcode.encode("utf-8")).decode("utf-8")
+
+            async with httpx.AsyncClient() as client:
+                try:
+                    response = await client.post(API_URL, json={"scanned_code": encoded})
+                    response.raise_for_status()
+                except httpx.HTTPStatusError as e:
+                    # Сервер ответил, но код ответа (4xx/5xx)
+                    logger.error(f"Ошибка HTTP {e.response.status_code}: {e.response.text}")
+                except httpx.RequestError as e:
+                    # Проблема с соединением (нет сети, таймаут и т.д.)
+                    logger.error(f"Ошибка при запросе: {e}")
+            
     except asyncio.CancelledError:
         logger.error("Мониторинг штрих-кодов остановлен")
 
@@ -84,35 +69,38 @@ async def monitor_barcodes(serial_device_path: str, redis: Redis) -> None:
 async def main():
     """Основная функция приложения."""
     logger.info("Поиск COM-порта сканера штрих-кодов...")
-    redis = Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
     
     scaner = find_serial_device(vendor_id=0x27dd, product_id=0xe081)
     manual_scaner = find_serial_device_by_name()
-    if not all([scaner, manual_scaner]):
-        logger.error("Сканер не найден. Проверьте подключение и режим работы (USB Virtual COM).")
+    if not any([scaner, manual_scaner]):
+        logger.error("Сканеры не найдены. Проверьте подключение и режим работы (USB Virtual COM).")
         return
-    elif not scaner:
-        logger.error('Встроенный сканер не найден.')
-    elif not manual_scaner:
-        logger.error('Ручной сканер не найден')
+    if not scaner:
+        logger.warning("Встроенный сканер не найден.")
+    else:
+        logger.info(f"Найден встроенный сканер: {scaner}")
 
-    logger.info(f"Найдено встроенный сканер: {scaner}")
-    logger.info(f"Найдено ручной сканер: {manual_scaner}")
+    if not manual_scaner:
+        logger.warning("Ручной сканер не найден.")
+    else:
+        logger.info(f"Найден ручной сканер: {manual_scaner}")
 
-    task_scaner = asyncio.create_task(monitor_barcodes(scaner, redis=redis))
-    task_manual_scaner = asyncio.create_task(monitor_barcodes(manual_scaner, redis=redis))
+    tasks = []
+    if scaner:
+        tasks.append(asyncio.create_task(monitor_barcodes(scaner)))
+    if manual_scaner:
+        tasks.append(asyncio.create_task(monitor_barcodes(manual_scaner)))
 
     try:
-        await asyncio.gather(task_scaner, task_manual_scaner)
+        await asyncio.gather(*tasks)
     except asyncio.CancelledError:
         logger.info("Задачи были отменены")
     except KeyboardInterrupt:
         logger.info("\nПолучен сигнал прерывания. Останавливаю...")
-        # Отменяем обе задачи
-        task_scaner.cancel()
-        task_manual_scaner.cancel()
+        for task in tasks:
+            task.cancel()
         try:
-            await asyncio.gather(task_scaner, task_manual_scaner)
+            await asyncio.gather(*tasks)
         except asyncio.CancelledError:
             logger.info("Задачи корректно отменены")
         logger.info("Программа завершена.")
