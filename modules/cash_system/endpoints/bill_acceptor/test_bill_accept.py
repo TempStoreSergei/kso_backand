@@ -12,11 +12,11 @@ if TYPE_CHECKING:
 
 
 async def test_bill_accept(
-    amount: Literal[10, 50, 100, 200, 1000, 2000, 5000],
+    amount: Literal['10', '50', '100', '200', '1000', '2000', '5000'],
     redis: "Redis" = Depends(get_redis),
 ):
     command = {'command': 'start_accepting_payment', 'data': {
-        'amount': amount
+        'amount': int(amount)
     }}
     response = await pubsub_command_util(
         redis, cash_system_settings.PAYMENT_SYSTEM_CASH_CHANNEL, command

@@ -20,11 +20,11 @@ class SBPilotAction():
             rrn = extract_rrn(content)
             logger.info('Чек сохранен в файл pay_checks.txt')
             logger.info('Платеж завершен успешно')
-            send_to_ws(event='successPayment', data={'rrn': rrn}, detail='Платеж завершен успешно')
+            send_to_ws(event='successPayment', data={'rrn': rrn})
         else:
             error_msg = 'Ошибка при совершении платежа'
             logger.info(error_msg)
-            send_to_ws(event='errorPayment', detail=error_msg)
+            send_to_ws(event='errorPayment', data={'error': error_msg})
 
         self.response.update({'success': True, 'message': 'Запрос отправлен успешно'})
         return self.response

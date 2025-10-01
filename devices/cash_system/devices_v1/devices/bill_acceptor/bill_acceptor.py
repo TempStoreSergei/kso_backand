@@ -63,7 +63,9 @@ class BillAcceptor:
     async def reset_device(self) -> bool:
         """Сброс."""
         try:
-            self.writer.write(bill_acceptor_config.CMD_RESET_DEVICE)
+            reset_cmd = bill_acceptor_config.CMD_RESET_DEVICE
+            reset_cmd += self._calculate_crc(reset_cmd)
+            self.writer.write(reset_cmd)
             await self.writer.drain()
             await asyncio.sleep(2)  # Allow time for device to reset
             return True
@@ -83,7 +85,9 @@ class BillAcceptor:
     async def stop_accepting(self) -> None:
         """Остановка приема купюр."""
         # Send disable command
-        disable_cmd = self._calculate_crc(bill_acceptor_config.CMD_DISABLE)
+        disable_cmd = bill_acceptor_config.CMD_DISABLE
+        disable_cmd += self._calculate_crc(disable_cmd)
+        self._calculate_crc(disable_cmd)
         self.writer.write(disable_cmd)
         await self.writer.drain()
         self._active = False

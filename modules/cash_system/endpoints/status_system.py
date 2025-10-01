@@ -35,5 +35,5 @@ async def status_system(
             upper_box_count=bill_dispenser_status.get('data').get('upper_box_count'),
             lower_box_count=bill_dispenser_status.get('data').get('lower_box_count'),
         ) if bill_dispenser_status.get('success') else None,
-        detail=f'{bill_acceptor_status.get('message')} | {bill_dispenser_status.get('message')}',
+        detail=f'{bill_acceptor_status.get("message")} | {bill_dispenser_status.get("message")}',
     )

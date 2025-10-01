@@ -23,7 +23,7 @@ async def listen_to_redis(redis, api):
     # Подписка на канал команд
     channel = 'payment_system_cash_commands'
     channel_response = f'{channel}_response'
-    pubsub.subscribe(channel)
+    await pubsub.subscribe(channel)
     logger.info("Ожидание команд...")
 
     # Слушаем канал и выполняем команды
@@ -38,11 +38,7 @@ async def listen_to_redis(redis, api):
                 command = json.loads(raw_data)
                 logger.info(f"Получена команда: {command}")
 
-                # зависит от выбранного устройства
-                response = {}
-                cash_device = await redis.get('cash_preset_name')
-                if cash_device == 'standart':
-                    response = await payment_system_cash_commands(command, api)
+                response = await payment_system_cash_commands(command, api)
 
                 await redis.publish(channel_response, json.dumps(response))
                 logger.info(f"[{channel}] Ответ отправлен в {channel_response}: {response}")

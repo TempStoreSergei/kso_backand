@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, WebSocket
 from fastapi.security import HTTPBearer
@@ -10,13 +12,17 @@ from scripts.set_users_db import set_users_db
 
 app = FastAPI()
 
-@app.on_event("startup")
-async def startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     # await drop_tables_db()
-    await set_users_db()
-    await set_terminal_functions_db()
-    await set_user_functions_map_db()
+    # await set_users_db()
+    # await set_terminal_functions_db()
+    # await set_user_functions_map_db()
     await set_and_run_modules_services()
+
+    yield
+
+    await stop_and_disable_modules_services()
 
 @app.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):

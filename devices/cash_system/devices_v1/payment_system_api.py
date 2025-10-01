@@ -335,8 +335,8 @@ class PaymentSystemAPI:
         """Начало платежа."""
         upper_box_count = int(await self.redis.get('bill_dispenser:upper_count'))
         lower_box_count = int(await self.redis.get('bill_dispenser:lower_count'))
-        bill_count = await self.redis.set('bill_count')
-        max_bill_count = await self.redis.set('max_bill_count')
+        bill_count = await self.redis.get('bill_count')
+        max_bill_count = await self.redis.get('max_bill_count')
 
         if self.is_payment_in_progress:
             logger.error('Платеж уже запущен')
@@ -358,7 +358,6 @@ class PaymentSystemAPI:
                 'message': 'Устройство bill acceptor переполнено',
             }
 
-        amount = amount * 100
         logger.info(f"Начат прием на сумму {amount} рублей")
 
         self.target_amount = amount
