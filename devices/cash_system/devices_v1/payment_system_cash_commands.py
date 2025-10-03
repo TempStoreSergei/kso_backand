@@ -35,8 +35,8 @@ async def payment_system_cash_commands(command_data, api):
         response_data = await api.bill_acceptor_status()
 
     elif command == 'set_bill_dispenser_lvl':
-        upper_lvl = data.get('upper_lvl') // 100
-        lower_lvl = data.get('lower_lvl') // 100
+        upper_lvl = data.get('upper_lvl')
+        lower_lvl = data.get('lower_lvl')
         response_data = await api.set_bill_dispenser_lvl(upper_lvl, lower_lvl)
 
     elif command == 'set_bill_dispenser_count':

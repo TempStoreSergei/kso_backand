@@ -15,6 +15,10 @@ class WSManager:
     def disconnect(self, ws: WebSocket):
         self.active.remove(ws)
 
+    async def broadcast(self, message: dict):
+        for ws in self.active:
+            await ws.send_json(message)
+
     async def _send_to_all(self, message: BaseModel):
         """Внутренний метод для отправки сообщения всем подключенным клиентам."""
         message = message.model_dump()
@@ -25,6 +29,12 @@ class WSManager:
         message = WSEventDTO(
             event=WSEventType.get_one_item,
             data=item_data,
+        )
+        await self._send_to_all(message)
+
+    async def send_error_payment(self):
+        message = WSEventDTO(
+            event=WSEventType.error_payment,
         )
         await self._send_to_all(message)
 

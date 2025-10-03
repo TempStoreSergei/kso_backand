@@ -2,7 +2,7 @@ REDIS_HOST = "localhost"
 REDIS_PORT = 6379
 
 # Websocket configuration
-WEBSOCKET_URL = "http://localhost:8000/websockets/test_run_accepting_cash"
+WS_URL = "ws://localhost:8005/ws"
 
 # Device ports
 COIN_ACCEPTOR_PORT = "/dev/ttyACM0"
@@ -32,11 +32,11 @@ class BillAcceptorConfig:
     BILL_ACCEPTOR_PORT: str = "/dev/ttyS0"
 
     BILL_CODES: dict[bytes, int] = {
-        b'\x06': 1000,
-        b'\x05': 500,
-        b'\x04': 200,
-        b'\x03': 100,
-        b'\x02': 50,
+        b'\x06': 100000,
+        b'\x05': 50000,
+        b'\x04': 20000,
+        b'\x03': 10000,
+        b'\x02': 5000,
     }
 
     # Device command constants

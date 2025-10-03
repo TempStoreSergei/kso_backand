@@ -5,7 +5,8 @@ from pydantic import BaseModel, Field
 
 
 class WSEventType(str, Enum):
-    get_one_item = 'GetOneItem'
+    get_one_item = 'getOneItem'
+    error_payment = 'errorPayment'
 
 
 class WSEventDTO(BaseModel):

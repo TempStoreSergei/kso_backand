@@ -1,19 +1,11 @@
 import json
 import websockets
 
+from configs import WS_URL
 
-async def send_to_ws(event: str, detail: str, data: dict | None = None):
-    uri = "ws://localhost:8000/websockets/test_run_accepting_cash"
-    try:
-        async with websockets.connect(uri) as websocket:
 
-            # Отправка тестового сообщения
-            message = json.dumps({
-                'event': event,
-                'detail': detail,
-                'data': data or {}
-            })
-            await websocket.send(message)
-
-    except Exception as e:
-        print(f"Ошибка: {e}")
+async def send_to_ws(event: str, data: dict | None = None):
+    message = {"event": event, "data": data}
+    async with websockets.connect(WS_URL) as ws:
+        await ws.send(json.dumps(message))
+        print(f"Отправлено: {message}")
