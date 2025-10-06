@@ -1,7 +1,7 @@
 from fastapi import WebSocket
 from pydantic import BaseModel
 
-from modules.websocket.ws_dto import WSEventDTO, WSEventType, WSItemDataDTO
+from modules.websocket.ws_dto import WSEventDTO, WSEventType, WSOrderDataDTO
 
 
 class WSManager:
@@ -25,10 +25,10 @@ class WSManager:
         for ws in self.active:
             await ws.send_json(message)
 
-    async def send_item(self, item_data: WSItemDataDTO):
+    async def send_order(self, order_data: WSOrderDataDTO):
         message = WSEventDTO(
-            event=WSEventType.get_one_item,
-            data=item_data,
+            event=WSEventType.get_order_data,
+            data=order_data,
         )
         await self._send_to_all(message)
 

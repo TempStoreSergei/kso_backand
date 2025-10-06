@@ -1,23 +1,40 @@
-from secrets import token_hex
+from fastapi import Depends, HTTPException, Response
+from fastapi.security import OAuth2PasswordRequestForm
 
-from fastapi import Depends, HTTPException
-
-from api.DTO.endpoints.auth.login_dto import LoginRequestDTO, LoginResponseDTO
-from api.dependencies.get_obj_db import get_auth_repo, get_cookie_repo
-from api.db.auth_repository import AuthDatabaseRepository, CookieDatabaseRepository
-from api.configs.loggers import logger
+from api.DTO.endpoints.auth.login_dto import LoginResponseDTO
+from api.db.auth_repository import AuthDatabaseRepository
+from api.dependencies.get_obj_db import get_auth_repo
+from api.utils.auth.create_jwt import create_jwt_token, create_refresh_token
+from api.utils.auth.devpass import pwd_context
 
 
 async def login(
-    login_data: LoginRequestDTO,
+    response: Response,
+    form_data: OAuth2PasswordRequestForm = Depends(),
     auth_repo: AuthDatabaseRepository = Depends(get_auth_repo),
-    cookie_repo: CookieDatabaseRepository = Depends(get_cookie_repo),
-) -> LoginResponseDTO:
-    user = await auth_repo.login(login_data.username, login_data.password)
-    if not user:
-        raise HTTPException(401, 'Неверные логин или пароль')
+):
+    user = await auth_repo.get(username=form_data.username)
+    if not user or not pwd_context.verify(form_data.password, user.password):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    token = token_hex(16)
-    await cookie_repo.create({'user_id': user.id, 'token': token})
-    logger.info(f"Пользователь {user.user_name} авторизован успешно")
-    return LoginResponseDTO(access_token=token)
+    access_token = create_jwt_token({"sub": user.username})
+    refresh_token = create_refresh_token({"sub": user.username})
+
+    response.set_cookie(
+        key="access_token",
+        value=access_token,
+        httponly=True,
+        secure=False,
+        samesite="strict",
+        max_age=60 * 15  # 15 минут
+    )
+    response.set_cookie(
+        key="refresh_token",
+        value=refresh_token,
+        httponly=False,
+        secure=True,
+        samesite="strict",
+        max_age=3600 * 24 * 7  # 7 дней
+    )
+
+    return LoginResponseDTO(detail="logged in")

@@ -1,16 +1,21 @@
-from fastapi import Depends, HTTPException
-from fastapi.security import HTTPAuthorizationCredentials
+from fastapi import Depends, HTTPException, Request
 
-from api.configs.app import security
-from api.dependencies.get_obj_db import get_cookie_repo
-from api.db.auth_repository import CookieDatabaseRepository
+from api.dependencies.get_obj_db import get_auth_repo
+from api.db.auth_repository import AuthDatabaseRepository
+from api.utils.auth.create_jwt import verify_jwt_token
 
 
 async def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-    cookie_repo: CookieDatabaseRepository = Depends(get_cookie_repo),
+    request: Request,
+    auth_repo: AuthDatabaseRepository = Depends(get_auth_repo),
 ):
-    cookie = await cookie_repo.get_cookie_by_token(credentials.credentials)
-    if not cookie:
-        raise HTTPException(401, "Некорректные куки")
-    return cookie.user
+    token = request.cookies.get("access_token")
+    if not token:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    decoded_data = verify_jwt_token(token)
+    if not decoded_data:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    user = await auth_repo.get(username=decoded_data["sub"])
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user

@@ -2,52 +2,39 @@ from uuid import UUID
 
 from sqlalchemy import select, and_
 from sqlalchemy.orm import selectinload
+from fastapi import HTTPException
 
 from api.db.base_database_repository import BaseDatabaseRepository
 from api.db.error_handlers import handle_db_error
-from api.models.auth_models import User, Cookie, UserFunctionsMap, TerminalFunctions
+from api.models.auth_models import User
+from api.utils.auth.devpass import hash_password, verify_password
 
 
 class AuthDatabaseRepository(BaseDatabaseRepository):
-    """Репозиторий для работы с """
     model_class = User
 
-    @handle_db_error
-    async def login(self, username: str, password: str):
-        query = select(self.model_class).where(
-            and_(self.model_class.user_name == username, self.model_class.user_password == password)
-        )
-        result = await self.session.execute(query)
-        user = result.scalar_one_or_none()
+    async def register_user(self, username: str, password: str):
+        existing_user = await self.get(username=username)
+        if existing_user:
+            raise HTTPException(status_code=400, detail="Пользователь с таким именем уже существует")
+        hashed = hash_password(password)
+        user = await self.create(username=username, password=hashed)
         return user
 
-    @handle_db_error
-    async def change_user_password(self, user_id: UUID, new_password: str):
-        user = await self.session.get(self.model_class, user_id)
-        user.user_password = new_password
-        await self.session.commit()
+    # async def get_user_by_username(self, username: str) -> User:
+    #     return await self.get(username=username)
+    #
+    # async def update_password(self, username: str, password: str):
+    #     return await self.update(filters={"username": username}, values={"password": password})
+    #
+    # async def update_role(self, username: str, role: str):
+    #     return await self.update(filters={"username": username}, values={"role": role})
+    #
+    # async def delete_user(self, username: str):
+    #     return await self.delete(username=username)
 
-    @handle_db_error
-    async def get_user_functions(self, user_id: UUID):
-        query = (select(TerminalFunctions.function_name)
-                 .join(UserFunctionsMap,TerminalFunctions.id == UserFunctionsMap.terminal_function_id)
-                 .where(UserFunctionsMap.user_id == user_id))
-        result = await self.session.execute(query)
-        functions = result.scalars().all()
-        if not functions:
-            return None
-        return functions
-
-
-class CookieDatabaseRepository(BaseDatabaseRepository):
-    """Репозиторий для работы с """
-    model_class = Cookie
-
-    @handle_db_error
-    async def get_cookie_by_token(self, token):
-        query = select(Cookie).where(Cookie.token == token).options(selectinload(Cookie.user))
-        result = await self.session.execute(query)
-        cookie = result.scalar_one_or_none()
-        if not cookie:
-            return False
-        return cookie
+    async def authenticate_user(self, username: str, password: str):
+        user = await self.get(username=username)
+        if user and verify_password(password, user.password):
+            return user
+        return None

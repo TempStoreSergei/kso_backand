@@ -1,13 +1,15 @@
 from fastapi import status
 
-from api.DTO.endpoints.auth.change_password_dto import ChangePasswordResponseDTO
-from api.DTO.endpoints.auth.get_user_functioins_dto import GetUserFunctionsResponseDTO
 from api.DTO.endpoints.auth.login_dto import LoginResponseDTO
+from api.DTO.endpoints.auth.refresh_dto import RefreshResponseDTO
+from api.DTO.endpoints.auth.register_dto import RegisterResponseDTO
+from api.DTO.endpoints.auth.update_user_role_dto import UpdateUserRoleResponseDTO
 from api.DTO.factories.router_factory import RouteDTO
-from api.endpoints.auth.change_user_password import change_password
-from api.endpoints.auth.get_user_functions import get_user_functions
+from api.endpoints.auth.delete_user import delete_user
 from api.endpoints.auth.login import login
-from api.endpoints.auth.logout import logout
+from api.endpoints.auth.refresh import refresh
+from api.endpoints.auth.register import register
+from api.endpoints.auth.update_user_role import update_user_role
 
 AUTH_ROUTES = [
     RouteDTO(
@@ -15,51 +17,65 @@ AUTH_ROUTES = [
         endpoint=login,
         response_model=LoginResponseDTO,
         methods=["POST"],
+        status_code=status.HTTP_200_OK,
+        summary="",
+        description="",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/refresh",
+        endpoint=refresh,
+        response_model=RefreshResponseDTO,
+        methods=["POST"],
+        status_code=status.HTTP_200_OK,
+        summary="",
+        description="",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/register",
+        endpoint=register,
+        response_model=RegisterResponseDTO,
+        methods=["POST"],
         status_code=status.HTTP_201_CREATED,
         summary="",
         description="",
         responses={
-            status.HTTP_200_OK: {
+            status.HTTP_201_CREATED: {
                 "description": "",
             },
         },
     ),
     RouteDTO(
-        path="/logout",
-        endpoint=logout,
+        path="/{username}",
+        endpoint=delete_user,
         response_model=None,
-        methods=["GET"],
-        status_code=status.HTTP_200_OK,
+        methods=["DELETE"],
+        status_code=status.HTTP_204_NO_CONTENT,
         summary="",
         description="",
         responses={
-            status.HTTP_200_OK: {
+            status.HTTP_204_NO_CONTENT: {
                 "description": "",
             },
         },
     ),
     RouteDTO(
-        path="/change_password",
-        endpoint=change_password,
-        response_model=ChangePasswordResponseDTO,
-        methods=["POST"],
+        path="/{username}/role",
+        endpoint=update_user_role,
+        response_model=UpdateUserRoleResponseDTO,
+        methods=["PUT"],
         status_code=status.HTTP_200_OK,
-        summary="Изменить свой пароль ",
-        description="Изменение своего пароля.",
-        responses={
-            status.HTTP_200_OK: {
-                "description": "",
-            },
-        },
-    ),
-    RouteDTO(
-        path="/get_user_functions",
-        endpoint=get_user_functions,
-        response_model=GetUserFunctionsResponseDTO,
-        methods=["GET"],
-        status_code=status.HTTP_200_OK,
-        summary="Получить функции пользователя",
-        description="Получение функций пользователя.",
+        summary="",
+        description="",
         responses={
             status.HTTP_200_OK: {
                 "description": "",

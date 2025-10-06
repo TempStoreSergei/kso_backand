@@ -28,7 +28,7 @@ async def send_to_api(scanned_code: str):
         try:
             response = await client.post(API_URL, json={"scanned_code": encoded})
             response.raise_for_status()
-            logger.error(f"✓ Отправлено на сервер")
+            logger.info(f"✓ Отправлено на сервер")
         except httpx.HTTPStatusError as e:
             logger.error(f"✗ Ошибка HTTP {e.response.status_code}: {e.response.text}")
         except httpx.RequestError as e:

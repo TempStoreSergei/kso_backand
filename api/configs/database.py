@@ -15,6 +15,9 @@ async def get_async_session() -> AsyncGenerator[Any, Any]:
     async with async_session_maker() as session:
         try:
             yield session
+            await session.commit()
         except Exception:
             await session.rollback()
             raise
+        finally:
+            await session.close()

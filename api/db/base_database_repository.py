@@ -1,8 +1,6 @@
 from abc import ABC
 from typing import Type
-from uuid import UUID
 
-from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,55 +16,33 @@ class BaseDatabaseRepository(ABC):
         self.session = session
 
     @handle_db_error
-    async def create(self, create_data: dict):
+    async def create(self, **kwargs):
         """Базовый метод создания записи"""
-        new_instance = self.model_class(**create_data)
+        new_instance = self.model_class(**kwargs)
         self.session.add(new_instance)
-
-        await self.session.commit()
-        await self.session.refresh(new_instance)
+        await self.session.flush()
         return new_instance
 
     @handle_db_error
-    async def read_all(self, query: select = None):
-        if query is None:
-            query = select(self.model_class)
+    async def get(self, **filters):
+        result = await self.session.execute(select(self.model_class).filter_by(**filters))
+        return result.scalar_one_or_none()
+
+    @handle_db_error
+    async def update(self, filters: dict, values: dict):
+        query = select(self.model_class).filter_by(**filters)
         result = await self.session.execute(query)
-        instances = result.scalars().all()
-        return instances
+        obj = result.scalar_one_or_none()
+        if obj:
+            for k, v in values.items():
+                setattr(obj, k, v)
+        return obj
 
     @handle_db_error
-    async def read_by_id(self, instance_id: int | UUID, options: list | None = None):
-        instance = await self.session.get(self.model_class, instance_id, options=options)
-        if not instance:
-            return None
-        return instance
-
-    @handle_db_error
-    async def update(self, instance_id: int, updated_data: dict, query: select = None):
-        if query is None:
-            query = select(self.model_class).where(self.model_class.id == instance_id)
+    async def delete(self, **filters):
+        query = select(self.model_class).filter_by(**filters)
         result = await self.session.execute(query)
-        instance = result.scalar_one_or_none()
-
-        if not instance:
-            raise HTTPException(status_code=404, detail="Объект не найден в базе данных")
-
-        for key, value in updated_data.items():
-            setattr(instance, key, value)
-
-        await self.session.commit()
-        await self.session.refresh(instance)
-        return instance
-
-    @handle_db_error
-    async def delete(self, instance_id: int):
-        stmt = select(self.model_class).where(self.model_class.id == instance_id)
-        result = await self.session.execute(stmt)
-        instance = result.scalar_one_or_none()
-
-        if not instance:
-            raise HTTPException(status_code=404, detail="Объект не найден в базе данных")
-
-        await self.session.delete(instance)
-        await self.session.commit()
+        obj = result.scalar_one_or_none()
+        if obj:
+            await self.session.delete(obj)
+        return obj

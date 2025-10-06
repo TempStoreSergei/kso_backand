@@ -1,4 +1,5 @@
 import asyncio
+import json
 
 import websockets
 
@@ -14,7 +15,8 @@ async def listen():
             while True:
                 try:
                     message = await websocket.recv()
-                    print(f"Получено сообщение: {message}")
+                    parsed = json.loads(message)
+                    print(json.dumps(parsed, indent=4, ensure_ascii=False))
                 except websockets.ConnectionClosed:
                     print("Соединение закрыто")
                     break

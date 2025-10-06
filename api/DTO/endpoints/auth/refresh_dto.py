@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 
-class LoginResponseDTO(BaseModel):
+class RefreshResponseDTO(BaseModel):
     detail: str
