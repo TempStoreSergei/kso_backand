@@ -4,11 +4,13 @@ import importlib.util
 from api.configs.app import app
 from api.router_factory import RouterFactory
 from api.routes.auth_routes import AUTH_ROUTES
+from api.routes.guests_routes import GUESTS_ROUTES
 
 
 routers = list()
 
 routers.append(RouterFactory(prefix='/api/v1/auth', tags=['Аутентификация'], routes=AUTH_ROUTES))
+routers.append(RouterFactory(prefix='/api/v1/guests', tags=['Гости'], routes=GUESTS_ROUTES))
 
 # Ищем все routers.py внутри подпапок modules
 for router_file in Path("modules").glob("*/routers.py"):

@@ -29,6 +29,11 @@ class BaseDatabaseRepository(ABC):
         return result.scalar_one_or_none()
 
     @handle_db_error
+    async def get_all(self):
+        result = await self.session.execute(select(self.model_class))
+        return result.scalars().all()
+
+    @handle_db_error
     async def update(self, filters: dict, values: dict):
         query = select(self.model_class).filter_by(**filters)
         result = await self.session.execute(query)
