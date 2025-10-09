@@ -1,8 +1,8 @@
 """init
 
-Revision ID: 166846aee3cd
+Revision ID: 07ce43a865cd
 Revises: 
-Create Date: 2025-10-06 15:29:04.044883
+Create Date: 2025-10-07 12:20:06.308378
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '166846aee3cd'
+revision: str = '07ce43a865cd'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -28,11 +28,18 @@ def upgrade() -> None:
     sa.Column('surname', sa.String(length=100), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('rooms',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=50), nullable=False),
+    sa.Column('is_deleted', sa.Boolean(), nullable=False),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('services',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('tax', sa.Integer(), nullable=False),
+    sa.Column('is_deleted', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
@@ -54,11 +61,12 @@ def upgrade() -> None:
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('guest_id', sa.Integer(), nullable=False),
-    sa.Column('room_number', sa.Integer(), nullable=False),
+    sa.Column('room_id', sa.Integer(), nullable=False),
     sa.Column('check_in', sa.Date(), nullable=True),
     sa.Column('check_out', sa.Date(), nullable=True),
     sa.Column('payment_type', sa.String(length=50), nullable=True),
     sa.ForeignKeyConstraint(['guest_id'], ['guests.id'], ),
+    sa.ForeignKeyConstraint(['room_id'], ['rooms.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('transaction_services',
@@ -80,5 +88,6 @@ def downgrade() -> None:
     op.drop_table('refresh_tokens')
     op.drop_table('users')
     op.drop_table('services')
+    op.drop_table('rooms')
     op.drop_table('guests')
     # ### end Alembic commands ###

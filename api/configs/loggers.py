@@ -1,10 +1,45 @@
 import logging
 from logging.handlers import RotatingFileHandler
+import time
 
 import colorlog
+import httpx
+
+from api.configs.settings import settings
 
 
-def get_logger(name: str, log_file: str = "logs/api.log") -> logging.Logger:
+def send_loki(level: str, message: str, app: str):
+    try:
+        log_entry = {
+            "streams": [
+                {
+                    "stream": {"level": level, "app": app},
+                    "values": [[str(int(time.time() * 1e9)), message]],
+                }
+            ]
+        }
+        headers = {"Content-Type": "application/json"}
+        with httpx.Client() as client:
+            client.post(settings.LOKI_URL, json=log_entry, headers=headers, timeout=2.0)
+    except Exception as e:
+        print(f"[send_loki error]: {e}")
+
+
+class LokiHandler(logging.Handler):
+    def __init__(self, app: str):
+        super().__init__()
+        self.app = app
+
+    def emit(self, record):
+        try:
+            message = self.format(record)
+            level = record.levelname.upper()
+            send_loki(level, message, self.app)
+        except Exception:
+            self.handleError(record)
+
+
+def get_logger(name: str, app: str = 'api', log_file: str = "logs/api.log") -> logging.Logger:
     """
     Создаёт и возвращает настроенный логгер с консолью и файловым логированием.
 
@@ -45,10 +80,18 @@ def get_logger(name: str, log_file: str = "logs/api.log") -> logging.Logger:
     console_handler.setLevel(logging.DEBUG)
     console_handler.setFormatter(console_formatter)
 
+    # Создаём хендлер для Loki
+    loki_handler = LokiHandler(app)
+    loki_handler.setLevel(logging.DEBUG)  # или нужный уровень
+    loki_handler.setFormatter(logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s"
+    ))
+
     # Чтобы не дублировались хендлеры при повторном вызове
     if not logger.hasHandlers():
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
+        logger.addHandler(loki_handler)
 
     return logger
 

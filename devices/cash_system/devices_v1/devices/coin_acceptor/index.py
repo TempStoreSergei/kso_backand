@@ -1,6 +1,5 @@
 import time
 import threading
-import logging
 from typing import Dict, Optional
 import serial
 import asyncio
@@ -13,14 +12,13 @@ from devices.coin_acceptor.utils import (
 from devices.coin_acceptor.parser import SSPParser
 from event_system import EventType
 from configs import PORT_OPTIONS
+from loggers import logger
 
 
 # Load command list
 with open('static/commands.json', 'r') as f:
     command_list = json.load(f)
 
-# Configure logging
-logger = logging.getLogger("ssp.main")
 
 class SSP:
     def __init__(self, event_publisher):

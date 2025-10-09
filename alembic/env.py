@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from alembic import context
 from api.models.auth_models import Base
 from api.models.guests_models import Base
+from modules.screensaver.models import Base
 from api.configs.database import settings
 import asyncio
 

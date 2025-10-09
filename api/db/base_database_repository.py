@@ -51,3 +51,12 @@ class BaseDatabaseRepository(ABC):
         if obj:
             await self.session.delete(obj)
         return obj
+
+    @handle_db_error
+    async def soft_delete(self, **filters):
+        query = select(self.model_class).filter_by(**filters)
+        result = await self.session.execute(query)
+        obj = result.scalar_one_or_none()
+        if obj:
+            obj.is_deleted = True
+        return obj

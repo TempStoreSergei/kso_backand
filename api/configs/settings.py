@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
     DATABASE_SHOP_URL: str
+    LOKI_URL: str
     class Config:
         env_file = ".env"
 

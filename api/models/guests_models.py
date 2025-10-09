@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer, Date, ForeignKey, Table, Column
+from sqlalchemy import String, Integer, Date, ForeignKey, Table, Column, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from api.configs.database import Base
@@ -34,6 +34,7 @@ class Service(Base):
     name: Mapped[str] = mapped_column(String(100))
     price: Mapped[float] = mapped_column(Integer)
     tax: Mapped[int] = mapped_column(Integer)
+    is_deleted: Mapped[bool] = mapped_column(Boolean, default=False)
 
     transactions: Mapped[list["Transaction"]] = relationship(
         "Transaction",
@@ -47,6 +48,7 @@ class Room(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(50))
+    is_deleted: Mapped[bool] = mapped_column(Boolean, default=False)
 
     transactions: Mapped[list["Transaction"]] = relationship(
         "Transaction",

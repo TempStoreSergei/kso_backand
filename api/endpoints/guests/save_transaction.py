@@ -1,4 +1,4 @@
-from fastapi import Depends
+from fastapi import Depends, HTTPException, status
 
 from api.DTO.endpoints.guests.save_transaction_dto import AddTransactionResponseDTO, \
     AddTransactionRequestDTO
@@ -21,6 +21,11 @@ async def save_transaction(
     services=[]
     for service_id in services_data:
         service = await service_repo.get(id=service_id)
+        if not service:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail='Услуга не найдена'
+            )
         services.append(service)
 
     new_transaction = await transaction_repo.create(

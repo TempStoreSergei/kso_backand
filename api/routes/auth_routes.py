@@ -7,6 +7,7 @@ from api.DTO.endpoints.auth.update_user_role_dto import UpdateUserRoleResponseDT
 from api.DTO.factories.router_factory import RouteDTO
 from api.endpoints.auth.delete_user import delete_user
 from api.endpoints.auth.login import login
+from api.endpoints.auth.logout import logout
 from api.endpoints.auth.refresh import refresh
 from api.endpoints.auth.register import register
 from api.endpoints.auth.update_user_role import update_user_role
@@ -17,6 +18,20 @@ AUTH_ROUTES = [
         endpoint=login,
         response_model=LoginResponseDTO,
         methods=["POST"],
+        status_code=status.HTTP_200_OK,
+        summary="",
+        description="",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/logout",
+        endpoint=logout,
+        response_model=LoginResponseDTO,
+        methods=["GET"],
         status_code=status.HTTP_200_OK,
         summary="",
         description="",

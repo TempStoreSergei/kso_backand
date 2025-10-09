@@ -2,20 +2,16 @@ import os
 import struct
 import random
 import json
-import logging
 from typing import Dict, List, Union, Optional, Any, Tuple
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
+from loggers import logger
 
 # Constants
 STX = 0x7f
 STEX = 0x7e
 CRC_SSP_SEED = 0xffff
 CRC_SSP_POLY = 0x8005
-
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("ssp")
 
 # Load static data
 with open('static/status_desc.json', 'r') as f:

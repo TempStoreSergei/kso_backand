@@ -1,6 +1,8 @@
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
 
+LOKI_URL='http://localhost:3100/loki/api/v1/push'
+
 # Websocket configuration
 WS_URL = "ws://localhost:8005/ws"
 
@@ -81,7 +83,5 @@ class BillAcceptorConfig:
 
 BILL_DISPENSER_PORT = '/dev/ttyS1'
 MIN_BOX_COUNT = 50
-
-
 
 bill_acceptor_config = BillAcceptorConfig()

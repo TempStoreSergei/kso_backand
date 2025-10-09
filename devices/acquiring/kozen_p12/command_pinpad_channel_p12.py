@@ -42,7 +42,8 @@ async def command_pinpad_channel_p12(command):
         logger.info(f"Output: {stdout}")
 
         if command_name == 'start_pay':  # Оплата
-            response = sb_pilot_action.start_pay(stdout)
+            sb_pilot_action.start_pay(stdout)
+            response.update({'success': True})
 
         elif command_name == "refund_pay":  # Возврат
             response = sb_pilot_action.refund_pay(stdout)

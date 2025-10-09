@@ -1,10 +1,8 @@
-import logging
 from typing import Optional, List, Dict, Tuple, Any
+from loggers import logger
 
 # Constants
 SSP_STX = 0x7f
-
-logger = logging.getLogger("ssp.parser")
 
 class SSPParser:
     def __init__(self):
