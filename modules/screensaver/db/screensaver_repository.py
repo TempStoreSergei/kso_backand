@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.db.base_database_repository import BaseDatabaseRepository
 from api.configs.database import get_async_session
-from modules.screensaver.models import ScreensaverFile, ScreensaverSettings
+from modules.screensaver.models.models import ScreensaverFile, ScreensaverSettings
 
 
 class ScreensaverFileDatabaseRepository(BaseDatabaseRepository):

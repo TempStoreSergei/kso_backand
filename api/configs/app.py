@@ -8,6 +8,7 @@ from api.configs.middlewares import LoggingMiddleware
 from modules.websocket.ws_manager import ws_manager
 from scripts.drop_tables_db import drop_tables_db
 from scripts.set_room_and_service import set_room_and_service
+from scripts.set_screensaver import set_screensaver
 # from scripts.set_and_run_modules_services import set_and_run_modules_services
 from scripts.set_users_db import set_users_db
 from api.configs.loggers import logger
@@ -17,6 +18,7 @@ from api.configs.loggers import logger
 async def lifespan(app: FastAPI):
     # await drop_tables_db()
     await set_users_db()
+    await set_screensaver()
     await set_room_and_service()
     # await set_and_run_modules_services()
     logger.info('Приложение запущено')

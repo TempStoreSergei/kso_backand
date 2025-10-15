@@ -15,12 +15,21 @@ async def test_bill_accept(
     data: TestBillAcceptRequestDTO,
     redis: "Redis" = Depends(get_redis),
 ):
-    command = {'command': 'start_accepting_payment', 'data': {
-        'amount': int(data.amount)
-    }}
-    response = await pubsub_command_util(
-        redis, cash_system_settings.PAYMENT_SYSTEM_CASH_CHANNEL, command
-    )
+    try:
+        await redis.set('cash_system_is_test_mode', 'True')
+
+        command = {
+            'command': 'start_accepting_payment',
+            'data': {'amount': int(data.amount)}
+        }
+
+        response = await pubsub_command_util(
+            redis,
+            cash_system_settings.PAYMENT_SYSTEM_CASH_CHANNEL,
+            command
+        )
+    finally:
+        await redis.delete('cash_system_is_test_mode')
     return TestBillAcceptResponseDTO(
         status=response.get('success'),
         detail=response.get('message'),

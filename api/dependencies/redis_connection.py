@@ -59,7 +59,7 @@ async def pubsub_command_util(redis: Redis, channel: str, command: dict):
     return response_data
 
 
-async def wait_for_response(pubsub, command_id, timeout: int = 15):
+async def wait_for_response(pubsub, command_id, timeout: int = 10):
     """Ожидание ответа из Redis Pub/Sub с проверкой command_id."""
     async def _listener():
         async for message in pubsub.listen():

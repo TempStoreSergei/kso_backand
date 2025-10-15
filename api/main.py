@@ -4,15 +4,15 @@ import importlib.util
 from api.configs.app import app
 from api.router_factory import RouterFactory
 from api.routes.auth_routes import AUTH_ROUTES
-from api.routes.guests_routes import GUESTS_ROUTES
 from api.routes.notifications_routes import NOTIFICATIONS_ROUTES
+from api.routes.system_routes import SYSTEM_ROUTES
 
 
 routers = list()
 
 routers.append(RouterFactory(prefix='/api/v1/auth', tags=['Аутентификация'], routes=AUTH_ROUTES))
-routers.append(RouterFactory(prefix='/api/v1/guests', tags=['Гости'], routes=GUESTS_ROUTES))
 routers.append(RouterFactory(prefix='/api/v1/notifications', tags=['Уведомления'], routes=NOTIFICATIONS_ROUTES))
+routers.append(RouterFactory(prefix='/api/v1/system', tags=['Система'], routes=SYSTEM_ROUTES))
 
 # Ищем все routers.py внутри подпапок modules
 for router_file in Path("modules").glob("*/routers.py"):
@@ -22,7 +22,7 @@ for router_file in Path("modules").glob("*/routers.py"):
         if hasattr(module, "routers"):
             module_routers = getattr(module, "routers")
             routers += module_routers
-            print(f"✓ Добавлено {len(module_routers)} роутеров из {module_name}")
+            print(f"✓ Добавлены роутеры из модуля {module_name}")
     except Exception as e:
         print(f"✗ Ошибка при загрузке {module_name}: {e}")
         continue

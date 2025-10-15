@@ -379,6 +379,7 @@ class PaymentSystemAPI:
         lower_box_count = int(await self.redis.get('bill_dispenser:lower_count'))
         bill_count = int(await self.redis.get('bill_count'))
         max_bill_count = int(await self.redis.get('max_bill_count'))
+        is_test_mode = await self.redis.get('cash_system_is_test_mode')
 
         if self.is_payment_in_progress:
             logger.error('Платеж уже запущен')
@@ -386,8 +387,11 @@ class PaymentSystemAPI:
                 'success': False,
                 'message': 'Платеж уже запущен',
             }
+
+        if is_test_mode:
+            logger.info('Тестовый режим — пропускаем проверки купюр.')
         elif upper_box_count < MIN_BOX_COUNT or lower_box_count < MIN_BOX_COUNT:
-            logger.error(f'В bill_dispenser недостаточно купюр. '
+            logger.error(f'В bill_dispenser недостаточно купюр, менее 50. '
                          f'Верхний: {upper_box_count}, Нижний: {lower_box_count}')
             return {
                 'success': False,

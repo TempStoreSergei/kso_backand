@@ -26,11 +26,11 @@ class BaseDatabaseRepository(ABC):
     @handle_db_error
     async def get(self, **filters):
         result = await self.session.execute(select(self.model_class).filter_by(**filters))
-        return result.scalar_one_or_none()
+        return result.scalars().first()
 
     @handle_db_error
-    async def get_all(self):
-        result = await self.session.execute(select(self.model_class))
+    async def get_all(self, **filters):
+        result = await self.session.execute(select(self.model_class).filter_by(**filters))
         return result.scalars().all()
 
     @handle_db_error

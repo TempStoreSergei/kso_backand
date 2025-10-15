@@ -9,7 +9,7 @@ from modules.cash_system.DTO.bill_dispenser.bill_dispenser_status_response_dto i
 from modules.cash_system.DTO.bill_dispenser.set_nominal_dto import SetNominalResponseDTO
 from modules.cash_system.DTO.bill_dispenser.test_bill_dispense_response_DTO import \
     TestBillDispenseResponseDTO
-from modules.cash_system.endpoints.bill_acceptor.reset_bill_count import reset_bill_count
+from modules.cash_system.endpoints.bill_dispenser.reset_bill_count import reset_bill_count
 from modules.cash_system.endpoints.bill_dispenser.add_bill_count import add_bill_count
 from modules.cash_system.endpoints.bill_dispenser.bill_dispenser_status import bill_dispenser_status
 from modules.cash_system.endpoints.bill_dispenser.set_nominal import set_nominal

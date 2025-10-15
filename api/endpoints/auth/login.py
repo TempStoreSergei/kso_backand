@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException, Response
 from fastapi.security import OAuth2PasswordRequestForm
 
-from api.DTO.endpoints.auth.login_dto import LoginResponseDTO
+from api.DTO.auth.login_dto import LoginResponseDTO
 from api.db.auth_repository import AuthDatabaseRepository
 from api.dependencies.get_obj_db import get_auth_repo
 from api.utils.auth.create_jwt import create_jwt_token, create_refresh_token

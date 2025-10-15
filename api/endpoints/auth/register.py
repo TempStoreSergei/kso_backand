@@ -1,6 +1,6 @@
 from fastapi import Depends
 
-from api.DTO.endpoints.auth.register_dto import RegisterResponseDTO, RegisterRequestDTO
+from api.DTO.auth.register_dto import RegisterResponseDTO, RegisterRequestDTO
 from api.db.auth_repository import AuthDatabaseRepository
 from api.dependencies.get_obj_db import get_auth_repo
 

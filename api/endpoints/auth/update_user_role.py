@@ -1,6 +1,6 @@
 from fastapi import Depends, HTTPException, status
 
-from api.DTO.endpoints.auth.update_user_role_dto import UpdateUserRoleRequestDTO, \
+from api.DTO.auth.update_user_role_dto import UpdateUserRoleRequestDTO, \
     UpdateUserRoleResponseDTO
 from api.db.auth_repository import AuthDatabaseRepository
 from api.dependencies.check_user_role import role

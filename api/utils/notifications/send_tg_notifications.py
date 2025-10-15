@@ -4,9 +4,6 @@ from api.configs.loggers import logger
 from api.dependencies.redis_connection import get_redis
 
 
-# TOKEN = "5827679864:AAGOTKAGTk4t92qWs9Jae_zf01mQ7ZrrPdg"
-# CHANNEL_ID = "@bot_notifications1"
-
 async def send_to_channel(text: str):
     async for redis in get_redis():
         token = await redis.get('tg_bot_notifications:token')

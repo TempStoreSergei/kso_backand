@@ -7,3 +7,8 @@ class SendScannedCodeRequestDTO(BaseModel):
 
 class SendScannedCodeResponseDTO(BaseModel):
     detail: str
+
+
+class CheckScannerServiceResponseDTO(BaseModel):
+    status: bool
+    detail: str | None = Field(None)

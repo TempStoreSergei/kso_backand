@@ -2,7 +2,7 @@ from fastapi import HTTPException, Response, Cookie
 
 from jose import JWTError, jwt
 
-from api.DTO.endpoints.auth.refresh_dto import RefreshResponseDTO
+from api.DTO.auth.refresh_dto import RefreshResponseDTO
 from api.utils.auth.create_jwt import create_jwt_token, SECRET_KEY, ALGORITHM
 
 

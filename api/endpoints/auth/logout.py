@@ -1,6 +1,6 @@
 from fastapi import Response
 
-from api.DTO.endpoints.auth.login_dto import LoginResponseDTO
+from api.DTO.auth.login_dto import LoginResponseDTO
 
 
 async def logout(

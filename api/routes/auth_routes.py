@@ -1,9 +1,9 @@
 from fastapi import status
 
-from api.DTO.endpoints.auth.login_dto import LoginResponseDTO
-from api.DTO.endpoints.auth.refresh_dto import RefreshResponseDTO
-from api.DTO.endpoints.auth.register_dto import RegisterResponseDTO
-from api.DTO.endpoints.auth.update_user_role_dto import UpdateUserRoleResponseDTO
+from api.DTO.auth.login_dto import LoginResponseDTO
+from api.DTO.auth.refresh_dto import RefreshResponseDTO
+from api.DTO.auth.register_dto import RegisterResponseDTO
+from api.DTO.auth.update_user_role_dto import UpdateUserRoleResponseDTO
 from api.DTO.factories.router_factory import RouteDTO
 from api.endpoints.auth.delete_user import delete_user
 from api.endpoints.auth.login import login
