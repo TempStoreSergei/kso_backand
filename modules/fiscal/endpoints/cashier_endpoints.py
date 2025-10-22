@@ -5,7 +5,7 @@ from redis.asyncio import Redis
 from api.dependencies.redis_connection import get_redis
 from modules.fiscal.DTO.base_response_dto import BaseResponseDTO
 from modules.fiscal.DTO.cashier.cashier_dto import SetCashierRequest, CashierInfoDTO
-from api.configs.settings import settings
+from modules.fiscal.configs.settings import fiscal_settings
 
 
 async def set_cashier(
@@ -65,8 +65,8 @@ async def get_cashier(
             success=True,
             message="Текущий кассир (из настроек)",
             data={
-                "cashier_name": settings.cashier_name,
-                "cashier_inn": settings.cashier_inn,
+                "cashier_name": fiscal_settings.cashier_name,
+                "cashier_inn": fiscal_settings.cashier_inn,
                 "source": "settings"
             }
         )
@@ -88,8 +88,8 @@ async def reset_cashier(
         success=True,
         message=f"Кассир для устройства {device_id} сброшен, будет использоваться кассир из настроек",
         data={
-            "cashier_name": settings.cashier_name,
-            "cashier_inn": settings.cashier_inn,
+            "cashier_name": fiscal_settings.cashier_name,
+            "cashier_inn": fiscal_settings.cashier_inn,
             "source": "settings"
         }
     )
