@@ -39,7 +39,7 @@ async def cancel_receipt(
     """
     command = {
         "device_id": device_id,
-        "command": "cancel_receipt",
+        "command": "receipt_cancel",
         "kwargs": request.model_dump()
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
@@ -67,7 +67,7 @@ async def registration(
     """
     command = {
         "device_id": device_id,
-        "command": "registration",
+        "command": "receipt_add_item",
         "kwargs": request.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
@@ -99,7 +99,7 @@ async def payment(
     """
     command = {
         "device_id": device_id,
-        "command": "payment",
+        "command": "receipt_add_payment",
         "kwargs": request.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
@@ -174,7 +174,7 @@ async def close_receipt(
     """
     command = {
         "device_id": device_id,
-        "command": "close_receipt",
+        "command": "receipt_close",
         "kwargs": request.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)

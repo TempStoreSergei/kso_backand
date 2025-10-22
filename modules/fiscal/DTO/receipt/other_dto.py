@@ -6,14 +6,14 @@ from pydantic import BaseModel, Field
 # ========== КОНСТАНТЫ ==========
 
 # Типы чеков (LIBFPTR_PARAM_RECEIPT_TYPE)
-RECEIPT_TYPE_SELL = 0  # Чек прихода (продажи)
-RECEIPT_TYPE_SELL_RETURN = 1  # Чек возврата прихода
-RECEIPT_TYPE_SELL_CORRECTION = 2  # Чек коррекции прихода
-RECEIPT_TYPE_SELL_RETURN_CORRECTION = 3  # Чек коррекции возврата прихода
+RECEIPT_TYPE_SELL = 1  # Чек прихода (продажи)
+RECEIPT_TYPE_SELL_RETURN = 2  # Чек возврата прихода
+RECEIPT_TYPE_SELL_CORRECTION = 7  # Чек коррекции прихода
+RECEIPT_TYPE_SELL_RETURN_CORRECTION = 8  # Чек коррекции возврата прихода
 RECEIPT_TYPE_BUY = 4  # Чек расхода (покупки)
 RECEIPT_TYPE_BUY_RETURN = 5  # Чек возврата расхода
-RECEIPT_TYPE_BUY_CORRECTION = 6  # Чек коррекции расхода
-RECEIPT_TYPE_BUY_RETURN_CORRECTION = 7  # Чек коррекции возврата расхода
+RECEIPT_TYPE_BUY_CORRECTION = 9  # Чек коррекции расхода
+RECEIPT_TYPE_BUY_RETURN_CORRECTION = 10  # Чек коррекции возврата расхода
 
 # Типы налогов (LIBFPTR_PARAM_TAX_TYPE)
 TAX_VAT0 = 1  # НДС 0%
