@@ -7,15 +7,15 @@ from api.dependencies.redis_connection import get_redis, pubsub_command_util
 
 
 async def open_connection(
-    request: OpenConnectionRequest,
+    data: OpenConnectionRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Открыть логическое соединение с ККТ"""
     command = {
         "device_id": device_id,
-        "command": "connection_open",
-        "kwargs": {"settings": request.settings}
+        "command": "open_connection",
+        "kwargs": {"settings": data.settings}
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -32,7 +32,7 @@ async def close_connection(
     """Закрыть логическое соединение с ККТ"""
     command = {
         "device_id": device_id,
-        "command": "connection_close"
+        "command": "close_connection"
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -49,7 +49,7 @@ async def is_connection_opened(
     """Проверить состояние логического соединения"""
     command = {
         "device_id": device_id,
-        "command": "connection_is_opened"
+        "command": "is_connection_opened"
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(

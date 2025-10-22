@@ -15,7 +15,7 @@ async def open_receipt(
     """Открыть новый чек"""
     command = {
         "device_id": device_id,
-        "command": "receipt_open",
+        "command": "open_receipt",
         "kwargs": data.model_dump()
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)

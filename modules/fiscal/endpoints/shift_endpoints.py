@@ -7,20 +7,20 @@ from modules.fiscal.DTO.shift.open_shift_dto import OpenShiftRequest
 
 
 async def open_shift(
-    request: OpenShiftRequest,
+    data: OpenShiftRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Открыть новую смену"""
     kwargs = {}
-    if request.cashier_name:
-        kwargs["cashier_name"] = request.cashier_name
-    if request.cashier_inn:
-        kwargs["cashier_inn"] = request.cashier_inn
+    if data.cashier_name:
+        kwargs["cashier_name"] = data.cashier_name
+    if data.cashier_inn:
+        kwargs["cashier_inn"] = data.cashier_inn
 
     command = {
         "device_id": device_id,
-        "command": "shift_open",
+        "command": "open_shift",
         "kwargs": kwargs
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
@@ -46,7 +46,7 @@ async def close_shift(
 
     command = {
         "device_id": device_id,
-        "command": "shift_close",
+        "command": "close_shift",
         "kwargs": kwargs
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
@@ -64,7 +64,7 @@ async def get_shift_status(
     """Получить статус текущей смены"""
     command = {
         "device_id": device_id,
-        "command": "shift_get_status"
+        "command": "get_shift_status"
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -89,7 +89,7 @@ async def print_x_report(
 
     command = {
         "device_id": device_id,
-        "command": "shift_print_x_report",
+        "command": "print_x_report",
         "kwargs": kwargs
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
