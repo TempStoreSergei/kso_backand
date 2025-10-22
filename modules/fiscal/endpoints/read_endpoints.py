@@ -11,6 +11,82 @@ from modules.fiscal.DTO.read.read_settings_dto import ReadSettingsRequestDTO
 from modules.fiscal.DTO.read.read_last_document_dto import ReadLastDocumentJournalRequestDTO
 
 
+def decode_bytes_to_string(byte_array: list[int]) -> str:
+    """
+    Преобразует массив байтов в читаемую строку.
+    Пробует разные кодировки: CP866 (для кириллицы ККТ), UTF-8, ASCII.
+    """
+    if not isinstance(byte_array, list):
+        return str(byte_array)
+
+    try:
+        # Преобразуем список байтов в bytes
+        byte_string = bytes(byte_array)
+
+        # Пробуем CP866 (основная кодировка для ККТ АТОЛ)
+        try:
+            decoded = byte_string.decode('cp866').strip()
+            if decoded:
+                return decoded
+        except:
+            pass
+
+        # Пробуем UTF-8
+        try:
+            decoded = byte_string.decode('utf-8').strip()
+            if decoded:
+                return decoded
+        except:
+            pass
+
+        # Пробуем ASCII
+        try:
+            decoded = byte_string.decode('ascii').strip()
+            if decoded:
+                return decoded
+        except:
+            pass
+
+        # Если не удалось декодировать, возвращаем как hex-строку
+        return byte_string.hex()
+    except:
+        return str(byte_array)
+
+
+def decode_tlv_records(tlv_records: list[dict]) -> list[dict]:
+    """
+    Декодирует значения TLV-записей в читаемый вид.
+    Преобразует массивы байтов в строки для текстовых полей.
+    """
+    if not tlv_records:
+        return tlv_records
+
+    decoded_records = []
+    for record in tlv_records:
+        decoded_record = record.copy()
+        tag_value = record.get('tag_value')
+        tag_type = record.get('tag_type')
+
+        # tag_type == 1 это LIBFPTR_TAG_TYPE_BYTES (байтовый массив, обычно текст)
+        # tag_type == 2 это LIBFPTR_TAG_TYPE_BITS (битовая маска)
+        if tag_type == 1 and isinstance(tag_value, list):
+            # Декодируем байтовый массив в строку
+            decoded_record['tag_value'] = decode_bytes_to_string(tag_value)
+            decoded_record['tag_value_raw'] = tag_value  # Сохраняем исходные байты
+        elif tag_type == 2 and isinstance(tag_value, list):
+            # Для битовых масок показываем hex
+            decoded_record['tag_value'] = bytes(tag_value).hex()
+            decoded_record['tag_value_raw'] = tag_value
+        elif tag_type == 9 and isinstance(tag_value, list):
+            # tag_type == 9 это LIBFPTR_TAG_TYPE_UNIXTIME
+            # Оставляем как есть, можно добавить декодирование в дату
+            decoded_record['tag_value_raw'] = tag_value
+
+        decoded_records.append(decoded_record)
+
+    return decoded_records
+
+
 async def read_fn_document(
     request: ReadFnDocumentRequestDTO,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
@@ -28,10 +104,15 @@ async def read_fn_document(
     channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
+    # Декодируем TLV-записи для читаемости
+    data = response.get('data')
+    if data and 'tlv_records' in data:
+        data['tlv_records'] = decode_tlv_records(data['tlv_records'])
+
     return BaseResponseDTO(
         success=response.get('success'),
         message=response.get('message'),
-        data=response.get('data'),
+        data=data,
     )
 
 
@@ -73,10 +154,15 @@ async def read_registration_document(
     channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
+    # Декодируем TLV-записи для читаемости
+    data = response.get('data')
+    if data and 'tlv_records' in data:
+        data['tlv_records'] = decode_tlv_records(data['tlv_records'])
+
     return BaseResponseDTO(
         success=response.get('success'),
         message=response.get('message'),
-        data=response.get('data'),
+        data=data,
     )
 
 
