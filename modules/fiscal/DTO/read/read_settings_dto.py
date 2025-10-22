@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 
 class ReadSettingsRequestDTO(BaseModel):
     """Запрос на чтение настроек ККТ"""
-    device_id: int = Field(..., description="ID устройства")
+    pass
 
 
 class SettingDTO(BaseModel):

@@ -1,5 +1,5 @@
 """Эндпоинты для чтения данных из ФН и ККТ"""
-from fastapi import Depends
+from fastapi import Depends, Query
 from redis.asyncio import Redis
 
 from api.dependencies.redis_connection import pubsub_command_util, get_redis
@@ -14,18 +14,19 @@ from modules.fiscal.DTO.read.read_last_document_dto import ReadLastDocumentJourn
 
 async def read_fn_document(
     request: ReadFnDocumentRequestDTO,
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Чтение документа из ФН в виде TLV-структур"""
     command = {
-        "device_id": request.device_id,
+        "device_id": device_id,
         "command": "read_fn_document",
         "kwargs": {
             "document_number": request.document_number
         }
     }
 
-    channel = f"command_fr_channel_{request.device_id}"
+    channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
     return BaseResponseDTO(
@@ -37,16 +38,17 @@ async def read_fn_document(
 
 async def read_licenses(
     request: ReadLicensesRequestDTO,
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Чтение списка введенных лицензий / кодов защиты"""
     command = {
-        "device_id": request.device_id,
+        "device_id": device_id,
         "command": "read_licenses",
         "kwargs": {}
     }
 
-    channel = f"command_fr_channel_{request.device_id}"
+    channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
     return BaseResponseDTO(
@@ -58,18 +60,19 @@ async def read_licenses(
 
 async def read_registration_document(
     request: ReadRegistrationDocumentRequestDTO,
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Чтение документа регистрации из ФН в виде TLV-структур"""
     command = {
-        "device_id": request.device_id,
+        "device_id": device_id,
         "command": "read_registration_document",
         "kwargs": {
             "registration_number": request.registration_number
         }
     }
 
-    channel = f"command_fr_channel_{request.device_id}"
+    channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
     return BaseResponseDTO(
@@ -81,18 +84,19 @@ async def read_registration_document(
 
 async def parse_complex_attribute(
     request: ParseComplexAttributeRequestDTO,
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Разбор составного реквизита"""
     command = {
-        "device_id": request.device_id,
+        "device_id": device_id,
         "command": "parse_complex_attribute",
         "kwargs": {
             "tag_value": request.tag_value
         }
     }
 
-    channel = f"command_fr_channel_{request.device_id}"
+    channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
     return BaseResponseDTO(
@@ -104,16 +108,17 @@ async def parse_complex_attribute(
 
 async def read_kkt_settings(
     request: ReadSettingsRequestDTO,
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Чтение всех настроек ККТ"""
     command = {
-        "device_id": request.device_id,
+        "device_id": device_id,
         "command": "read_kkt_settings",
         "kwargs": {}
     }
 
-    channel = f"command_fr_channel_{request.device_id}"
+    channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
     return BaseResponseDTO(
@@ -125,16 +130,17 @@ async def read_kkt_settings(
 
 async def read_last_document_journal(
     request: ReadLastDocumentJournalRequestDTO,
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Чтение последнего закрытого документа из электронного журнала"""
     command = {
-        "device_id": request.device_id,
+        "device_id": device_id,
         "command": "read_last_document_journal",
         "kwargs": {}
     }
 
-    channel = f"command_fr_channel_{request.device_id}"
+    channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
     return BaseResponseDTO(

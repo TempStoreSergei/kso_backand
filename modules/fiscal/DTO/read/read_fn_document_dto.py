@@ -3,7 +3,6 @@ from pydantic import BaseModel, Field
 
 class ReadFnDocumentRequestDTO(BaseModel):
     """Запрос на чтение документа из ФН"""
-    device_id: int = Field(..., description="ID устройства")
     document_number: int = Field(..., description="Номер фискального документа для чтения", ge=1)
 
 
