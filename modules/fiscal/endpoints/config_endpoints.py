@@ -12,7 +12,6 @@ async def configure_logging(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Настроить логирование драйвера АТОЛ"""
     command = {
         "device_id": device_id,
         "command": "configure_logging",
@@ -31,7 +30,6 @@ async def change_driver_label(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Изменить метку драйвера для логирования"""
     command = {
         "device_id": device_id,
         "command": "change_driver_label",
@@ -49,7 +47,6 @@ async def get_default_logging_config(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Получить настройки логирования по умолчанию"""
     command = {
         "device_id": device_id,
         "command": "get_default_logging_config"

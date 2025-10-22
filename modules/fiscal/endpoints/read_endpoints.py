@@ -113,7 +113,6 @@ async def read_fn_document(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Чтение документа из ФН в виде TLV-структур"""
     command = {
         "device_id": device_id,
         "command": "read_fn_document",
@@ -141,7 +140,6 @@ async def read_licenses(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Чтение списка введенных лицензий / кодов защиты"""
     command = {
         "device_id": device_id,
         "command": "read_licenses",
@@ -163,7 +161,6 @@ async def read_registration_document(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Чтение документа регистрации из ФН в виде TLV-структур"""
     command = {
         "device_id": device_id,
         "command": "read_registration_document",
@@ -192,7 +189,6 @@ async def parse_complex_attribute(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Разбор составного реквизита"""
     command = {
         "device_id": device_id,
         "command": "parse_complex_attribute",
@@ -216,7 +212,6 @@ async def read_kkt_settings(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Чтение всех настроек ККТ"""
     command = {
         "device_id": device_id,
         "command": "read_kkt_settings",
@@ -238,7 +233,6 @@ async def read_last_document_journal(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Чтение последнего закрытого документа из электронного журнала"""
     command = {
         "device_id": device_id,
         "command": "read_last_document_journal",

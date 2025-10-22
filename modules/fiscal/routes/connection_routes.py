@@ -12,7 +12,7 @@ CONNECTION_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Открыть соединение",
-        description="Открыть логическое соединение с кассовым аппаратом",
+        description="Открыть логическое соединение с ККТ",
         responses={
             status.HTTP_200_OK: {
                 "description": "Соединение успешно открыто",
@@ -26,7 +26,7 @@ CONNECTION_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Закрыть соединение",
-        description="Закрыть логическое соединение с кассовым аппаратом",
+        description="Закрыть логическое соединение с ККТ",
         responses={
             status.HTTP_200_OK: {
                 "description": "Соединение успешно закрыто",
@@ -40,7 +40,7 @@ CONNECTION_ROUTES = [
         methods=["GET"],
         status_code=status.HTTP_200_OK,
         summary="Проверить соединение",
-        description="Проверить состояние логического соединения с ККТ",
+        description="Проверить состояние логического соединения",
         responses={
             status.HTTP_200_OK: {
                 "description": "Статус соединения получен",

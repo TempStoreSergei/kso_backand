@@ -11,7 +11,6 @@ async def open_connection(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Открыть логическое соединение с ККТ"""
     command = {
         "device_id": device_id,
         "command": "open_connection",
@@ -29,7 +28,6 @@ async def close_connection(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Закрыть логическое соединение с ККТ"""
     command = {
         "device_id": device_id,
         "command": "close_connection"
@@ -46,7 +44,6 @@ async def is_connection_opened(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Проверить состояние логического соединения"""
     command = {
         "device_id": device_id,
         "command": "is_connection_opened"

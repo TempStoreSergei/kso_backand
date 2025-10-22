@@ -12,7 +12,7 @@ OPERATOR_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Регистрация кассира",
-        description="Зарегистрировать кассира перед выполнением фискальной операции. Рекомендуется вызывать перед каждой операцией (открытие чека, печать отчета и т.д.)",
+        description="Зарегистрировать кассира (operatorLogin)",
         responses={
             status.HTTP_200_OK: {
                 "description": "Кассир успешно зарегистрирован",
@@ -26,7 +26,7 @@ OPERATOR_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Допечатать документ",
-        description="Допечатать фискальный документ, который не был допечатан из-за проблем с принтером (закончилась бумага, открыта крышка и т.д.)",
+        description="Допечатать документ (continuePrint)",
         responses={
             status.HTTP_200_OK: {
                 "description": "Документ допечатан",
@@ -40,7 +40,7 @@ OPERATOR_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Проверить закрытие документа",
-        description="Проверить, был ли документ успешно закрыт в ФН и напечатан на чековой ленте. Важнейший метод для обеспечения надежности!",
+        description="Проверить закрытие документа (checkDocumentClosed)",
         responses={
             status.HTTP_200_OK: {
                 "description": "Состояние документа проверено",

@@ -12,7 +12,7 @@ SHIFT_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Открыть смену",
-        description="Открыть новую рабочую смену на кассе",
+        description="Открыть новую смену",
         responses={
             status.HTTP_200_OK: {
                 "description": "Смена успешно открыта",
@@ -26,7 +26,7 @@ SHIFT_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Закрыть смену",
-        description="Закрыть смену с формированием Z-отчета",
+        description="Закрыть текущую смену (Z-отчет)",
         responses={
             status.HTTP_200_OK: {
                 "description": "Смена успешно закрыта, Z-отчет сформирован",
@@ -40,7 +40,7 @@ SHIFT_ROUTES = [
         methods=["GET"],
         status_code=status.HTTP_200_OK,
         summary="Статус смены",
-        description="Получить информацию о текущей смене",
+        description="Получить статус текущей смены",
         responses={
             status.HTTP_200_OK: {
                 "description": "Статус смены получен",
@@ -54,7 +54,7 @@ SHIFT_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="X-отчет",
-        description="Напечатать X-отчет без закрытия смены",
+        description="Напечатать X-отчет (отчет без гашения)",
         responses={
             status.HTTP_200_OK: {
                 "description": "X-отчет успешно напечатан",

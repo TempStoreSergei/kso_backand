@@ -13,7 +13,7 @@ CASH_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Внесение наличных",
-        description="Внести наличные деньги в кассу",
+        description="Внесение наличных в кассу",
         responses={
             status.HTTP_200_OK: {
                 "description": "Наличные успешно внесены",
@@ -27,7 +27,7 @@ CASH_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Изъятие наличных",
-        description="Изъять наличные из кассы",
+        description="Изъятие наличных из кассы",
         responses={
             status.HTTP_200_OK: {
                 "description": "Наличные успешно изъяты",
@@ -41,7 +41,7 @@ CASH_ROUTES = [
         methods=["GET"],
         status_code=status.HTTP_200_OK,
         summary="Сумма в ящике",
-        description="Получить текущую сумму наличных в денежном ящике",
+        description="Получить сумму наличных в денежном ящике",
         responses={
             status.HTTP_200_OK: {
                 "description": "Сумма наличных получена",
@@ -55,7 +55,7 @@ CASH_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Открыть ящик",
-        description="Открыть денежный ящик",
+        description="Открыть денежный ящик.\n\nПодает сигнал на открытие денежного ящика, подключенного к ККТ.",
         responses={
             status.HTTP_200_OK: {
                 "description": "Денежный ящик открыт",
@@ -69,7 +69,7 @@ CASH_ROUTES = [
         methods=["GET"],
         status_code=status.HTTP_200_OK,
         summary="Статус ящика",
-        description="Проверить состояние денежного ящика (открыт/закрыт)",
+        description="Проверить состояние денежного ящика",
         responses={
             status.HTTP_200_OK: {
                 "description": "Статус денежного ящика получен",

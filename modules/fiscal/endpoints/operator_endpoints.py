@@ -11,7 +11,6 @@ async def operator_login(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Зарегистрировать кассира (operatorLogin)"""
     command = {
         "device_id": device_id,
         "command": "operator_login",
@@ -29,7 +28,6 @@ async def continue_print(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Допечатать документ (continuePrint)"""
     command = {
         "device_id": device_id,
         "command": "continue_print"
@@ -46,7 +44,6 @@ async def check_document_closed(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Проверить закрытие документа (checkDocumentClosed)"""
     command = {
         "device_id": device_id,
         "command": "check_document_closed"

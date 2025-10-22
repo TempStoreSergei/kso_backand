@@ -11,7 +11,6 @@ async def open_shift(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Открыть новую смену"""
     kwargs = {}
     if data.cashier_name:
         kwargs["cashier_name"] = data.cashier_name
@@ -37,7 +36,6 @@ async def close_shift(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Закрыть текущую смену (Z-отчет)"""
     kwargs = {}
     if cashier_name:
         kwargs["cashier_name"] = cashier_name
@@ -61,7 +59,6 @@ async def get_shift_status(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Получить статус текущей смены"""
     command = {
         "device_id": device_id,
         "command": "get_shift_status"
@@ -80,7 +77,6 @@ async def print_x_report(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Напечатать X-отчет (отчет без гашения)"""
     kwargs = {}
     if cashier_name:
         kwargs["cashier_name"] = cashier_name

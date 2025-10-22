@@ -11,7 +11,6 @@ async def cash_in(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Внесение наличных в кассу"""
     command = {
         "device_id": device_id,
         "command": "cash_in",
@@ -30,7 +29,6 @@ async def cash_out(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Изъятие наличных из кассы"""
     command = {
         "device_id": device_id,
         "command": "cash_out",
@@ -47,7 +45,6 @@ async def get_cash_sum(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Получить сумму наличных в денежном ящике"""
     command = {
         "device_id": device_id,
         "command": "query_data",
@@ -64,7 +61,6 @@ async def open_cash_drawer(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Открыть денежный ящик"""
     command = {
         "device_id": device_id,
         "command": "cash_drawer_open"
@@ -81,7 +77,6 @@ async def get_cash_drawer_status(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """Проверить состояние денежного ящика"""
     command = {
         "device_id": device_id,
         "command": "query_data",

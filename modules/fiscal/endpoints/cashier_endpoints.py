@@ -13,12 +13,6 @@ async def set_cashier(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """
-    Установить текущего кассира для устройства.
-
-    Кассир будет использоваться по умолчанию для всех операций на этом устройстве,
-    пока не будет изменен или сброшен.
-    """
     # Сохраняем кассира в Redis
     cashier_key = f"cashier:{device_id}"
     cashier_data = {
@@ -39,11 +33,6 @@ async def get_cashier(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """
-    Получить текущего кассира для устройства.
-
-    Возвращает динамически установленного кассира или кассира из настроек.
-    """
     # Проверяем есть ли кассир в Redis
     cashier_key = f"cashier:{device_id}"
     cashier_data = await redis.hgetall(cashier_key)
@@ -76,11 +65,6 @@ async def reset_cashier(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
-    """
-    Сбросить текущего кассира.
-
-    После сброса будет использоваться кассир из настроек.
-    """
     cashier_key = f"cashier:{device_id}"
     await redis.delete(cashier_key)
 

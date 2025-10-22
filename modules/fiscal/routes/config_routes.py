@@ -13,7 +13,7 @@ CONFIG_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Настроить логирование",
-        description="Настроить логирование драйвера АТОЛ (уровни логов, категории, консольный вывод)",
+        description="Настроить логирование драйвера АТОЛ",
         responses={
             status.HTTP_200_OK: {
                 "description": "Логирование успешно настроено",
@@ -27,7 +27,7 @@ CONFIG_ROUTES = [
         methods=["POST"],
         status_code=status.HTTP_200_OK,
         summary="Изменить метку драйвера",
-        description="Изменить метку драйвера для идентификации в логах (используется с модификатором %L в формате лога)",
+        description="Изменить метку драйвера для логирования",
         responses={
             status.HTTP_200_OK: {
                 "description": "Метка драйвера успешно изменена",
@@ -41,7 +41,7 @@ CONFIG_ROUTES = [
         methods=["GET"],
         status_code=status.HTTP_200_OK,
         summary="Настройки логирования по умолчанию",
-        description="Получить стандартную конфигурацию логирования драйвера АТОЛ",
+        description="Получить настройки логирования по умолчанию",
         responses={
             status.HTTP_200_OK: {
                 "description": "Настройки логирования получены",
