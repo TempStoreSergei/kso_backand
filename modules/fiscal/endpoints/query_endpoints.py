@@ -488,3 +488,196 @@ async def get_wifi_info(
         message=response.get('message'),
         data=response.get('data'),
     )
+
+
+async def query_last_receipt(
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
+    redis: Redis = Depends(get_redis)
+):
+    """
+    Запрос информации о последнем чеке из ФН.
+
+    Возвращает информацию о последнем пробитом чеке в удобном для чтения формате:
+    - Номер фискального документа
+    - Сумма чека
+    - Фискальный признак документа (ФПД)
+    - Дата и время документа
+    - Тип чека (прихода, возврата, коррекции и т.д.)
+
+    Поддерживается для всех ККТ.
+    """
+    command = {
+        "device_id": device_id,
+        "command": "query_last_receipt",
+    }
+    response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
+    return BaseResponseDTO(
+        success=response.get('success'),
+        message=response.get('message'),
+        data=response.get('data'),
+    )
+
+
+async def query_registration_info(
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
+    redis: Redis = Depends(get_redis)
+):
+    """
+    Запрос регистрационных данных ККТ из ФН.
+
+    Возвращает полную информацию о регистрации ККТ в удобном для чтения формате:
+    - ИНН и наименование организации
+    - Регистрационный номер ККТ
+    - Адреса расчетов и email
+    - Системы налогообложения (расшифрованные)
+    - Версия ФФД (расшифрованная)
+    - Признаки работы ККТ (автоматический режим, интернет, услуги и т.д.)
+    - Информация об ОФД
+    - Признак агента (расшифрованный)
+
+    Поддерживается для всех ККТ.
+    """
+    command = {
+        "device_id": device_id,
+        "command": "query_registration_info",
+    }
+    response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
+    return BaseResponseDTO(
+        success=response.get('success'),
+        message=response.get('message'),
+        data=response.get('data'),
+    )
+
+
+async def query_fn_info(
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
+    redis: Redis = Depends(get_redis)
+):
+    """
+    Запрос информации о фискальном накопителе (ФН).
+
+    Возвращает подробную информацию о ФН в удобном для чтения формате:
+    - Серийный номер ФН
+    - Версия ФН
+    - Тип ФН (боевая/отладочная)
+    - Состояние ФН (фискальный режим, архив закрыт и т.д.)
+    - Флаги ФН (смена открыта, текущая смена больше 24ч, закончена передача ФД и т.д.)
+    - Критические ошибки ФН (переполнение, ошибка критических данных, несовпадение ИНН)
+
+    Поддерживается для всех ККТ.
+    """
+    command = {
+        "device_id": device_id,
+        "command": "query_fn_info",
+    }
+    response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
+    return BaseResponseDTO(
+        success=response.get('success'),
+        message=response.get('message'),
+        data=response.get('data'),
+    )
+
+
+async def query_ofd_exchange_status(
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
+    redis: Redis = Depends(get_redis)
+):
+    """
+    Запрос статуса обмена с ОФД.
+
+    Возвращает информацию о состоянии обмена с оператором фискальных данных:
+    - Статус обмена (расшифрованные флаги: ожидает ответа, есть ответ, есть команда,
+      ожидается подтверждение и т.д.)
+    - Количество неотправленных документов
+    - Номер первого неотправленного документа
+    - Дата первого неотправленного документа
+
+    Поддерживается для всех ККТ.
+    """
+    command = {
+        "device_id": device_id,
+        "command": "query_ofd_exchange_status",
+    }
+    response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
+    return BaseResponseDTO(
+        success=response.get('success'),
+        message=response.get('message'),
+        data=response.get('data'),
+    )
+
+
+async def query_shift_info(
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
+    redis: Redis = Depends(get_redis)
+):
+    """
+    Запрос информации о смене из ФН.
+
+    Возвращает информацию о текущей смене:
+    - Количество чеков в текущей смене (всех типов)
+    - Номер текущей смены
+
+    Поддерживается для всех ККТ.
+    """
+    command = {
+        "device_id": device_id,
+        "command": "query_shift_info",
+    }
+    response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
+    return BaseResponseDTO(
+        success=response.get('success'),
+        message=response.get('message'),
+        data=response.get('data'),
+    )
+
+
+async def query_last_document(
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
+    redis: Redis = Depends(get_redis)
+):
+    """
+    Запрос информации о последнем фискальном документе из ФН.
+
+    Возвращает базовую информацию о последнем закрытом фискальном документе:
+    - Номер последнего документа
+    - Фискальный признак документа (ФПД)
+    - Дата и время документа
+
+    Поддерживается для всех ККТ.
+    """
+    command = {
+        "device_id": device_id,
+        "command": "query_last_document",
+    }
+    response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
+    return BaseResponseDTO(
+        success=response.get('success'),
+        message=response.get('message'),
+        data=response.get('data'),
+    )
+
+
+async def query_fn_validity(
+    device_id: str = Query("default", description="Идентификатор фискального регистратора"),
+    redis: Redis = Depends(get_redis)
+):
+    """
+    Запрос срока действия ФН.
+
+    Возвращает информацию о сроке службы фискального накопителя:
+    - Дата окончания срока действия ФН
+    - Количество оставшихся регистраций
+    - Количество оставшихся перерегистраций
+
+    Поддерживается для всех ККТ.
+    """
+    command = {
+        "device_id": device_id,
+        "command": "query_fn_validity",
+    }
+    response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
+    return BaseResponseDTO(
+        success=response.get('success'),
+        message=response.get('message'),
+        data=response.get('data'),
+    )
