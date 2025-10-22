@@ -310,4 +310,121 @@ QUERY_ROUTES = [
             },
         },
     ),
+
+    # ЗАПРОСЫ ИНФОРМАЦИИ ИЗ ФН
+    RouteDTO(
+        path="/last-receipt",
+        endpoint=query_last_receipt,
+        response_model=BaseResponseDTO,
+        methods=["GET"],
+        status_code=status.HTTP_200_OK,
+        summary="Информация о последнем чеке",
+        description="Запрос информации о последнем пробитом чеке из ФН в удобном для чтения формате. "
+                    "Возвращает номер документа, сумму чека, фискальный признак документа, дату и время, тип чека. "
+                    "Поддерживается для всех ККТ.",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "Информация о последнем чеке успешно получена",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/registration-info",
+        endpoint=query_registration_info,
+        response_model=BaseResponseDTO,
+        methods=["GET"],
+        status_code=status.HTTP_200_OK,
+        summary="Регистрационные данные ККТ",
+        description="Запрос всех регистрационных данных ККТ из ФН в удобном для чтения формате. "
+                    "Возвращает полную информацию о регистрации: ИНН, название организации, адреса, "
+                    "системы налогообложения (расшифрованные), версию ФФД, признаки работы ККТ, данные ОФД. "
+                    "Поддерживается для всех ККТ.",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "Регистрационные данные успешно получены",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/fn-info",
+        endpoint=query_fn_info,
+        response_model=BaseResponseDTO,
+        methods=["GET"],
+        status_code=status.HTTP_200_OK,
+        summary="Информация о фискальном накопителе",
+        description="Запрос подробной информации о ФН из ФН в удобном для чтения формате. "
+                    "Возвращает: серийный номер ФН, версию, тип (боевая/отладочная), состояние ФН, "
+                    "флаги ФН (смена открыта, текущая смена больше 24ч и т.д.), критические ошибки ФН. "
+                    "Поддерживается для всех ККТ.",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "Информация о ФН успешно получена",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/ofd-exchange-status",
+        endpoint=query_ofd_exchange_status,
+        response_model=BaseResponseDTO,
+        methods=["GET"],
+        status_code=status.HTTP_200_OK,
+        summary="Статус обмена с ОФД",
+        description="Запрос статуса обмена с оператором фискальных данных из ФН в удобном для чтения формате. "
+                    "Возвращает: статус обмена (расшифрованные флаги), количество неотправленных документов, "
+                    "номер и дату первого неотправленного документа. "
+                    "Поддерживается для всех ККТ.",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "Статус обмена с ОФД успешно получен",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/shift-info",
+        endpoint=query_shift_info,
+        response_model=BaseResponseDTO,
+        methods=["GET"],
+        status_code=status.HTTP_200_OK,
+        summary="Информация о смене из ФН",
+        description="Запрос информации о текущей смене из ФН. "
+                    "Возвращает: количество чеков в текущей смене (всех типов), номер текущей смены. "
+                    "Поддерживается для всех ККТ.",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "Информация о смене успешно получена",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/last-document",
+        endpoint=query_last_document,
+        response_model=BaseResponseDTO,
+        methods=["GET"],
+        status_code=status.HTTP_200_OK,
+        summary="Информация о последнем фискальном документе",
+        description="Запрос базовой информации о последнем закрытом фискальном документе из ФН. "
+                    "Возвращает: номер последнего документа, фискальный признак документа (ФПД), дату и время. "
+                    "Поддерживается для всех ККТ.",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "Информация о последнем документе успешно получена",
+            },
+        },
+    ),
+    RouteDTO(
+        path="/fn-validity",
+        endpoint=query_fn_validity,
+        response_model=BaseResponseDTO,
+        methods=["GET"],
+        status_code=status.HTTP_200_OK,
+        summary="Срок действия ФН",
+        description="Запрос срока действия фискального накопителя из ФН. "
+                    "Возвращает: дату окончания срока действия ФН, количество оставшихся регистраций и перерегистраций. "
+                    "Поддерживается для всех ККТ.",
+        responses={
+            status.HTTP_200_OK: {
+                "description": "Информация о сроке действия ФН успешно получена",
+            },
+        },
+    ),
 ]
