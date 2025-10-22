@@ -1,11 +1,17 @@
 from typing import Optional, List
 
 from pydantic import BaseModel, Field
+from modules.fiscal.DTO.receipt.enums import (
+    ReceiptType,
+    TaxationSystem,
+    AgentType,
+    CorrectionType
+)
 
 
 class OpenReceiptRequest(BaseModel):
     """Запрос на открытие чека"""
-    receipt_type: int = Field(..., description="Тип чека (0-7, см. константы RECEIPT_TYPE_*)")
+    receipt_type: ReceiptType = Field(..., description="Тип чека")
     electronically: bool = Field(False, description="Электронный чек (не печатать)")
     cashier_name: Optional[str] = Field(None, description="Имя кассира (если не указано, используется из настроек)")
     cashier_inn: Optional[str] = Field(None, description="ИНН кассира (если не указано, используется из настроек)")
@@ -13,11 +19,11 @@ class OpenReceiptRequest(BaseModel):
     customer_name: Optional[str] = Field(None, description="Покупатель (клиент) (тег 1227, ФФД < 1.2)")
     customer_inn: Optional[str] = Field(None, description="ИНН покупателя (тег 1228)")
     email_sender: Optional[str] = Field(None, description="Email отправителя чека (тег 1117)")
-    tax_system: Optional[int] = Field(None, description="Применяемая СНО (тег 1055, 0-4)")
+    tax_system: Optional[TaxationSystem] = Field(None, description="Применяемая СНО (тег 1055)")
     settlement_place: Optional[str] = Field(None, description="Место расчетов (тег 1187)")
     settlement_address: Optional[str] = Field(None, description="Адрес расчетов (тег 1009, ФФД ≥ 1.2)")
     fns_site: Optional[str] = Field(None, description="Адрес сайта ФНС (тег 1060)")
-    agent_type: Optional[int] = Field(None, description="Признак агента (тег 1057, ФФД < 1.2, 0-6)")
+    agent_type: Optional[AgentType] = Field(None, description="Признак агента (тег 1057, ФФД < 1.2)")
     supplier_phone: Optional[str] = Field(None, description="Телефон поставщика (тег 1171, ФФД < 1.2)")
     bank_agent_operation: Optional[str] = Field(None, description="Операция банковского платежного агента (тег 1044)")
     payment_agent_phones: Optional[List[str]] = Field(None, description="Телефоны платежного агента (тег 1073)")
@@ -33,6 +39,6 @@ class OpenReceiptRequest(BaseModel):
     operational_attribute: Optional[bytes] = Field(None, description="Операционный реквизит чека (тег 1270, ФФД ≥ 1.2)")
     internet_sign: bool = Field(False, description="Признак расчета в Интернет (тег 1125)")
     # Для чеков коррекции
-    correction_type: Optional[int] = Field(None, description="Тип коррекции (тег 1173): 0=самостоятельно, 1=по предписанию")
+    correction_type: Optional[CorrectionType] = Field(None, description="Тип коррекции (тег 1173)")
     correction_base_date: Optional[str] = Field(None, description="Дата корректируемого расчета (тег 1178, формат YYYY-MM-DD)")
     correction_base_number: Optional[str] = Field(None, description="Номер предписания налогового органа (тег 1179)")

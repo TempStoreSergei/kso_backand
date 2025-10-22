@@ -1,6 +1,13 @@
 from typing import Optional, List
 
 from pydantic import BaseModel, Field
+from modules.fiscal.DTO.receipt.enums import (
+    PaymentType,
+    TaxType,
+    PaymentMethodType,
+    PaymentObjectType,
+    AgentType
+)
 
 
 # ========== КОНСТАНТЫ ==========
@@ -98,7 +105,7 @@ class RegistrationRequest(BaseModel):
     quantity: float = Field(1.0, description="Количество (LIBFPTR_PARAM_QUANTITY)")
 
     # Налогообложение
-    tax_type: int = Field(TAX_NO, description="Тип НДС (LIBFPTR_PARAM_TAX_TYPE, 1-10)")
+    tax_type: TaxType = Field(TaxType.NO_VAT, description="Тип НДС (LIBFPTR_PARAM_TAX_TYPE)")
     tax_sum: Optional[float] = Field(None, description="Сумма налога (LIBFPTR_PARAM_TAX_SUM)")
     use_only_tax_type: bool = Field(False, description="Регистрировать только ставку налога без суммы")
     tax_mode: Optional[int] = Field(None, description="Способ начисления налога: 0=на позицию, 1=на единицу")
@@ -114,14 +121,14 @@ class RegistrationRequest(BaseModel):
     additional_attribute: Optional[str] = Field(None, description="Дополнительный реквизит предмета расчета (тег 1191)")
     measurement_unit_name: Optional[str] = Field(None, description="Единицы измерения предмета расчета (тег 1197, ФФД ≤ 1.1)")
     measurement_unit: Optional[int] = Field(None, description="Мера количества предмета расчета (тег 2108, ФФД ≥ 1.2)")
-    payment_method_type: int = Field(4, description="Признак способа расчета (тег 1214)")
-    payment_object_type: int = Field(1, description="Признак предмета расчета (тег 1212)")
+    payment_method_type: PaymentMethodType = Field(PaymentMethodType.FULL_PAYMENT, description="Признак способа расчета (тег 1214)")
+    payment_object_type: PaymentObjectType = Field(PaymentObjectType.COMMODITY, description="Признак предмета расчета (тег 1212)")
     excise: Optional[float] = Field(None, description="Акциз (тег 1229)")
     country_code: Optional[str] = Field(None, description="Код страны происхождения товара (тег 1230)")
     customs_declaration: Optional[str] = Field(None, description="Номер таможенной декларации (тег 1231)")
 
     # Агенты и поставщики
-    agent_type: Optional[int] = Field(None, description="Признак агента по предмету расчета (тег 1222)")
+    agent_type: Optional[AgentType] = Field(None, description="Признак агента по предмету расчета (тег 1222)")
     agent_info: Optional[bytes] = Field(None, description="Данные агента (тег 1223)")
     supplier_info: Optional[bytes] = Field(None, description="Данные поставщика (тег 1224)")
     supplier_inn: Optional[str] = Field(None, description="ИНН поставщика (тег 1226)")
@@ -162,7 +169,7 @@ class RegistrationRequest(BaseModel):
 
 class PaymentRequest(BaseModel):
     """Запрос на регистрацию оплаты"""
-    payment_type: int = Field(..., description="Способ расчета (0-9, см. PAYMENT_TYPE_*)")
+    payment_type: PaymentType = Field(..., description="Способ расчета")
     sum: float = Field(..., description="Сумма расчета (LIBFPTR_PARAM_PAYMENT_SUM)")
 
     # Сведения об оплате безналичными (тег 1235)
@@ -173,7 +180,7 @@ class PaymentRequest(BaseModel):
 
 class ReceiptTaxRequest(BaseModel):
     """Запрос на регистрацию налога на чек"""
-    tax_type: int = Field(..., description="Тип налога (1-10, см. TAX_*)")
+    tax_type: TaxType = Field(..., description="Тип налога")
     tax_sum: float = Field(..., description="Сумма налога (LIBFPTR_PARAM_TAX_SUM)")
 
 
@@ -184,7 +191,7 @@ class ReceiptTotalRequest(BaseModel):
 
 class CloseReceiptRequest(BaseModel):
     """Запрос на закрытие чека"""
-    payment_type: Optional[int] = Field(None, description="Способ автооплаты неоплаченного остатка (по умолчанию 0=наличные)")
+    payment_type: Optional[PaymentType] = Field(None, description="Способ автооплаты неоплаченного остатка (по умолчанию наличные)")
 
 
 class WriteSalesNoticeRequest(BaseModel):

@@ -67,20 +67,41 @@ def decode_tlv_records(tlv_records: list[dict]) -> list[dict]:
         tag_value = record.get('tag_value')
         tag_type = record.get('tag_type')
 
-        # tag_type == 1 это LIBFPTR_TAG_TYPE_BYTES (байтовый массив, обычно текст)
-        # tag_type == 2 это LIBFPTR_TAG_TYPE_BITS (битовая маска)
+        # tag_type == 1 это LIBFPTR_TAG_TYPE_STRING (байтовый массив, обычно текст)
+        # tag_type == 4 это LIBFPTR_TAG_TYPE_BITS (битовая маска)
+        # tag_type == 6 это LIBFPTR_TAG_TYPE_VLN (переменная длина число)
+        # tag_type == 7 это LIBFPTR_TAG_TYPE_UINT_16 (16-битное число)
+        # tag_type == 8 это LIBFPTR_TAG_TYPE_UINT_32 (32-битное число)
+        # tag_type == 9 это LIBFPTR_TAG_TYPE_UNIXTIME (Unix timestamp)
+
         if tag_type == 1 and isinstance(tag_value, list):
             # Декодируем байтовый массив в строку
             decoded_record['tag_value'] = decode_bytes_to_string(tag_value)
             decoded_record['tag_value_raw'] = tag_value  # Сохраняем исходные байты
-        elif tag_type == 2 and isinstance(tag_value, list):
+        elif tag_type == 4 and isinstance(tag_value, list):
             # Для битовых масок показываем hex
             decoded_record['tag_value'] = bytes(tag_value).hex()
             decoded_record['tag_value_raw'] = tag_value
+        elif tag_type in (6, 7, 8) and isinstance(tag_value, list):
+            # VLN, UINT_16, UINT_32 - декодируем в число (little-endian)
+            try:
+                num_value = int.from_bytes(bytes(tag_value), byteorder='little', signed=False)
+                decoded_record['tag_value'] = num_value
+                decoded_record['tag_value_raw'] = tag_value
+            except:
+                # Если не удалось декодировать, оставляем как есть
+                pass
         elif tag_type == 9 and isinstance(tag_value, list):
-            # tag_type == 9 это LIBFPTR_TAG_TYPE_UNIXTIME
-            # Оставляем как есть, можно добавить декодирование в дату
-            decoded_record['tag_value_raw'] = tag_value
+            # UNIX_TIME - декодируем в timestamp и дату
+            try:
+                timestamp = int.from_bytes(bytes(tag_value), byteorder='little', signed=False)
+                import datetime
+                dt = datetime.datetime.fromtimestamp(timestamp)
+                decoded_record['tag_value'] = timestamp
+                decoded_record['tag_value_datetime'] = dt.isoformat()
+                decoded_record['tag_value_raw'] = tag_value
+            except:
+                decoded_record['tag_value_raw'] = tag_value
 
         decoded_records.append(decoded_record)
 
