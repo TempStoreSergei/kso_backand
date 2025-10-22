@@ -6,6 +6,8 @@ from pydantic import BaseModel
 class DevicesList(str, Enum):
     fiscal = 'fiscal'
     scanner = 'scanner'
+    cash_system = 'cashSystem'
+    acquiring = 'acquiring'
 
 
 class SetUsedHardwareRequestDTO(BaseModel):

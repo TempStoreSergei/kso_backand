@@ -41,12 +41,13 @@ class Service(Base):
     __tablename__ = "services"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String(100))
+    name: Mapped[str] = mapped_column(String(200))
     price: Mapped[int] = mapped_column(Integer)
     tax: Mapped[int] = mapped_column(Integer)
     is_deleted: Mapped[bool] = mapped_column(Boolean, default=False)
     is_countable: Mapped[bool] = mapped_column(Boolean, default=False)
     is_duration: Mapped[bool] = mapped_column(Boolean, default=False)
+    code: Mapped[int] = mapped_column(String(50))
 
     transactions: Mapped[list["Transaction"]] = relationship(
         "Transaction",
@@ -59,10 +60,11 @@ class Fine(Base):
     __tablename__ = "fines"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String(100))
+    name: Mapped[str] = mapped_column(String(200))
     price: Mapped[int] = mapped_column(Integer)
     type: Mapped[str] = mapped_column(String(50)) # violation_rules or damage_to_property
     is_deleted: Mapped[bool] = mapped_column(Boolean, default=False)
+    code: Mapped[int] = mapped_column(String(50))
 
     transactions: Mapped[list["Transaction"]] = relationship(
         "Transaction",

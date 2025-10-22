@@ -4,3 +4,6 @@ __pycache__
 .idea
 uv.lock
 *.log
+loki-data
+loki-wall
+.ideagi
