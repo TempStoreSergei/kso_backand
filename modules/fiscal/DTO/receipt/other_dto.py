@@ -101,19 +101,19 @@ class RegistrationRequest(BaseModel):
     """Запрос на регистрацию позиции в чеке"""
     # Обязательные параметры
     name: str = Field(..., description="Наименование товара (LIBFPTR_PARAM_COMMODITY_NAME)")
-    price: float = Field(..., description="Цена за единицу (LIBFPTR_PARAM_PRICE)")
+    price: int = Field(..., description="Цена за единицу в копейках (LIBFPTR_PARAM_PRICE)")
     quantity: float = Field(1.0, description="Количество (LIBFPTR_PARAM_QUANTITY)")
 
     # Налогообложение
     tax_type: TaxType = Field(TaxType.NO_VAT, description="Тип НДС (LIBFPTR_PARAM_TAX_TYPE)")
-    tax_sum: Optional[float] = Field(None, description="Сумма налога (LIBFPTR_PARAM_TAX_SUM)")
+    tax_sum: Optional[int] = Field(None, description="Сумма налога в копейках (LIBFPTR_PARAM_TAX_SUM)")
     use_only_tax_type: bool = Field(False, description="Регистрировать только ставку налога без суммы")
     tax_mode: Optional[int] = Field(None, description="Способ начисления налога: 0=на позицию, 1=на единицу")
 
     # Дополнительные параметры позиции
-    position_sum: Optional[float] = Field(None, description="Полная сумма позиции с учетом скидки/надбавки")
+    position_sum: Optional[int] = Field(None, description="Полная сумма позиции в копейках с учетом скидки/надбавки")
     department: Optional[int] = Field(None, description="Номер отдела (LIBFPTR_PARAM_DEPARTMENT)")
-    info_discount_sum: Optional[float] = Field(None, description="Информация о скидке/надбавке")
+    info_discount_sum: Optional[int] = Field(None, description="Информация о скидке/надбавке в копейках")
     piece: bool = Field(False, description="Штучный товар (не печатать нули в дробной части)")
     check_sum: bool = Field(False, description="Проверять наличность в ДЯ при регистрации")
 
@@ -123,7 +123,7 @@ class RegistrationRequest(BaseModel):
     measurement_unit: Optional[int] = Field(None, description="Мера количества предмета расчета (тег 2108, ФФД ≥ 1.2)")
     payment_method_type: PaymentMethodType = Field(PaymentMethodType.FULL_PAYMENT, description="Признак способа расчета (тег 1214)")
     payment_object_type: PaymentObjectType = Field(PaymentObjectType.COMMODITY, description="Признак предмета расчета (тег 1212)")
-    excise: Optional[float] = Field(None, description="Акциз (тег 1229)")
+    excise: Optional[int] = Field(None, description="Акциз в копейках (тег 1229)")
     country_code: Optional[str] = Field(None, description="Код страны происхождения товара (тег 1230)")
     customs_declaration: Optional[str] = Field(None, description="Номер таможенной декларации (тег 1231)")
 
@@ -170,7 +170,7 @@ class RegistrationRequest(BaseModel):
 class PaymentRequest(BaseModel):
     """Запрос на регистрацию оплаты"""
     payment_type: PaymentType = Field(..., description="Способ расчета")
-    sum: float = Field(..., description="Сумма расчета (LIBFPTR_PARAM_PAYMENT_SUM)")
+    sum: int = Field(..., description="Сумма расчета в копейках (LIBFPTR_PARAM_PAYMENT_SUM)")
 
     # Сведения об оплате безналичными (тег 1235)
     electronically_payment_method: Optional[int] = Field(None, description="Признак способа оплаты безналичными (тег 1236)")
@@ -181,12 +181,12 @@ class PaymentRequest(BaseModel):
 class ReceiptTaxRequest(BaseModel):
     """Запрос на регистрацию налога на чек"""
     tax_type: TaxType = Field(..., description="Тип налога")
-    tax_sum: float = Field(..., description="Сумма налога (LIBFPTR_PARAM_TAX_SUM)")
+    tax_sum: int = Field(..., description="Сумма налога в копейках (LIBFPTR_PARAM_TAX_SUM)")
 
 
 class ReceiptTotalRequest(BaseModel):
     """Запрос на регистрацию итога чека"""
-    sum: float = Field(..., description="Сумма чека (LIBFPTR_PARAM_SUM)")
+    sum: int = Field(..., description="Сумма чека в копейках (LIBFPTR_PARAM_SUM)")
 
 
 class CloseReceiptRequest(BaseModel):
