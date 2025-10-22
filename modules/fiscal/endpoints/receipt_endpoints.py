@@ -8,7 +8,7 @@ from modules.fiscal.DTO.receipt.other_dto import *
 
 
 async def open_receipt(
-    request: OpenReceiptRequest,
+    data: OpenReceiptRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -16,7 +16,7 @@ async def open_receipt(
     command = {
         "device_id": device_id,
         "command": "receipt_open",
-        "kwargs": request.model_dump()
+        "kwargs": data.model_dump()
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -27,7 +27,7 @@ async def open_receipt(
 
 
 async def cancel_receipt(
-    request: CancelReceiptRequest = Body(default=CancelReceiptRequest()),
+    data: CancelReceiptRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -39,8 +39,8 @@ async def cancel_receipt(
     """
     command = {
         "device_id": device_id,
-        "command": "receipt_cancel",
-        "kwargs": request.model_dump()
+        "command": "cancel_receipt",
+        "kwargs": data.model_dump()
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -51,7 +51,7 @@ async def cancel_receipt(
 
 
 async def registration(
-    request: RegistrationRequest,
+    data: RegistrationRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -67,8 +67,8 @@ async def registration(
     """
     command = {
         "device_id": device_id,
-        "command": "receipt_add_item",
-        "kwargs": request.model_dump(exclude_none=True)
+        "command": "registration",
+        "kwargs": data.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -79,7 +79,7 @@ async def registration(
 
 
 async def payment(
-    request: PaymentRequest,
+    data: PaymentRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -99,8 +99,8 @@ async def payment(
     """
     command = {
         "device_id": device_id,
-        "command": "receipt_add_payment",
-        "kwargs": request.model_dump(exclude_none=True)
+        "command": "payment",
+        "kwargs": data.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -111,7 +111,7 @@ async def payment(
 
 
 async def receipt_tax(
-    request: ReceiptTaxRequest,
+    data: ReceiptTaxRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -124,7 +124,7 @@ async def receipt_tax(
     command = {
         "device_id": device_id,
         "command": "receipt_tax",
-        "kwargs": request.model_dump()
+        "kwargs": data.model_dump()
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -135,7 +135,7 @@ async def receipt_tax(
 
 
 async def receipt_total(
-    request: ReceiptTotalRequest,
+    data: ReceiptTotalRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -148,7 +148,7 @@ async def receipt_total(
     command = {
         "device_id": device_id,
         "command": "receipt_total",
-        "kwargs": request.model_dump()
+        "kwargs": data.model_dump()
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -159,7 +159,7 @@ async def receipt_total(
 
 
 async def close_receipt(
-    request: CloseReceiptRequest = Body(default=CloseReceiptRequest()),
+    data: CloseReceiptRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -174,8 +174,8 @@ async def close_receipt(
     """
     command = {
         "device_id": device_id,
-        "command": "receipt_close",
-        "kwargs": request.model_dump(exclude_none=True)
+        "command": "close_receipt",
+        "kwargs": data.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -238,7 +238,7 @@ async def continue_print(
 # ========== ОПЕРАЦИИ С КОДАМИ МАРКИРОВКИ (ФФД 1.2) ==========
 
 async def begin_marking_code_validation(
-    request: BeginMarkingCodeValidationRequest,
+    data: BeginMarkingCodeValidationRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -257,7 +257,7 @@ async def begin_marking_code_validation(
     command = {
         "device_id": device_id,
         "command": "begin_marking_code_validation",
-        "kwargs": request.model_dump(exclude_none=True)
+        "kwargs": data.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -394,7 +394,7 @@ async def check_marking_code_validations_ready(
 
 
 async def write_sales_notice(
-    request: WriteSalesNoticeRequest,
+    data: WriteSalesNoticeRequest,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
@@ -414,7 +414,7 @@ async def write_sales_notice(
     command = {
         "device_id": device_id,
         "command": "write_sales_notice",
-        "kwargs": request.model_dump(exclude_none=True)
+        "kwargs": data.model_dump(exclude_none=True)
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
