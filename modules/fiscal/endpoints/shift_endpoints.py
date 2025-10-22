@@ -12,10 +12,16 @@ async def open_shift(
     redis: Redis = Depends(get_redis)
 ):
     """Открыть новую смену"""
+    kwargs = {}
+    if request.cashier_name:
+        kwargs["cashier_name"] = request.cashier_name
+    if request.cashier_inn:
+        kwargs["cashier_inn"] = request.cashier_inn
+
     command = {
         "device_id": device_id,
         "command": "shift_open",
-        "kwargs": {"cashier_name": request.cashier_name}
+        "kwargs": kwargs
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -26,15 +32,22 @@ async def open_shift(
 
 
 async def close_shift(
-    cashier_name: str,
+    cashier_name: str = Query(None, description="Имя кассира (если не указано, используется из настроек)"),
+    cashier_inn: str = Query(None, description="ИНН кассира (если не указано, используется из настроек)"),
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Закрыть текущую смену (Z-отчет)"""
+    kwargs = {}
+    if cashier_name:
+        kwargs["cashier_name"] = cashier_name
+    if cashier_inn:
+        kwargs["cashier_inn"] = cashier_inn
+
     command = {
         "device_id": device_id,
         "command": "shift_close",
-        "kwargs": {"cashier_name": cashier_name}
+        "kwargs": kwargs
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
@@ -62,15 +75,22 @@ async def get_shift_status(
 
 
 async def print_x_report(
-    cashier_name: str,
+    cashier_name: str = Query(None, description="Имя кассира (если не указано, используется из настроек)"),
+    cashier_inn: str = Query(None, description="ИНН кассира (если не указано, используется из настроек)"),
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
     """Напечатать X-отчет (отчет без гашения)"""
+    kwargs = {}
+    if cashier_name:
+        kwargs["cashier_name"] = cashier_name
+    if cashier_inn:
+        kwargs["cashier_inn"] = cashier_inn
+
     command = {
         "device_id": device_id,
         "command": "shift_print_x_report",
-        "kwargs": {"cashier_name": cashier_name}
+        "kwargs": kwargs
     }
     response = await pubsub_command_util(redis, f"command_fr_channel_{device_id}", command)
     return BaseResponseDTO(
