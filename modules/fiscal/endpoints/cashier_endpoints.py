@@ -54,8 +54,8 @@ async def get_cashier(
             success=True,
             message="Текущий кассир (динамический)",
             data={
-                "cashier_name": cashier_data.get(b"cashier_name", b"").decode('utf-8'),
-                "cashier_inn": cashier_data.get(b"cashier_inn", b"").decode('utf-8'),
+                "cashier_name": cashier_data.get("cashier_name"),
+                "cashier_inn": cashier_data.get("cashier_inn"),
                 "source": "dynamic"
             }
         )
