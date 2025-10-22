@@ -4,7 +4,7 @@ from datetime import datetime
 
 class ReadLicensesRequestDTO(BaseModel):
     """Запрос на чтение списка лицензий"""
-    device_id: int = Field(..., description="ID устройства")
+    device_id: str = Field(..., description="ID устройства")
 
 
 class LicenseDTO(BaseModel):
