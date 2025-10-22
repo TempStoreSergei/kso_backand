@@ -7,6 +7,8 @@ class OpenReceiptRequest(BaseModel):
     """Запрос на открытие чека"""
     receipt_type: int = Field(..., description="Тип чека (0-7, см. константы RECEIPT_TYPE_*)")
     electronically: bool = Field(False, description="Электронный чек (не печатать)")
+    cashier_name: Optional[str] = Field(None, description="Имя кассира (если не указано, используется из настроек)")
+    cashier_inn: Optional[str] = Field(None, description="ИНН кассира (если не указано, используется из настроек)")
     customer_contact: Optional[str] = Field(None, description="Email или телефон покупателя (тег 1008)")
     customer_name: Optional[str] = Field(None, description="Покупатель (клиент) (тег 1227, ФФД < 1.2)")
     customer_inn: Optional[str] = Field(None, description="ИНН покупателя (тег 1228)")

@@ -9,6 +9,7 @@ from modules.fiscal.routes.operator_routes import OPERATOR_ROUTES
 from modules.fiscal.routes.connection_routes import CONNECTION_ROUTES
 from modules.fiscal.routes.config_routes import CONFIG_ROUTES
 from modules.fiscal.routes.read_routes import READ_ROUTES
+from modules.fiscal.routes.cashier_routes import CASHIER_ROUTES
 
 
 routers = list()
@@ -57,4 +58,9 @@ routers.append(RouterFactory(
     prefix='/read',
     tags=['Read Records (FN & KKT Data)'],
     routes=READ_ROUTES,
+))
+routers.append(RouterFactory(
+    prefix='/cashier',
+    tags=['Cashier Management'],
+    routes=CASHIER_ROUTES,
 ))
