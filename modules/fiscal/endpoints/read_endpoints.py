@@ -1,4 +1,9 @@
-"""Эндпоинты для чтения данных из ФН и ККТ"""
+"""
+Эндпоинты для чтения данных из ФН и ККТ
+
+Все декодирование TLV-записей и парсинг вложенных структур
+теперь происходит в queue worker (run_queue.py).
+"""
 from fastapi import Depends, Query
 from redis.asyncio import Redis
 
@@ -11,108 +16,25 @@ from modules.fiscal.DTO.read.read_settings_dto import ReadSettingsRequestDTO
 from modules.fiscal.DTO.read.read_last_document_dto import ReadLastDocumentJournalRequestDTO
 
 
-def decode_bytes_to_string(byte_array: list[int]) -> str:
-    """
-    Преобразует массив байтов в читаемую строку.
-    Пробует разные кодировки: CP866 (для кириллицы ККТ), UTF-8, ASCII.
-    """
-    if not isinstance(byte_array, list):
-        return str(byte_array)
-
-    try:
-        # Преобразуем список байтов в bytes
-        byte_string = bytes(byte_array)
-
-        # Пробуем CP866 (основная кодировка для ККТ АТОЛ)
-        try:
-            decoded = byte_string.decode('cp866').strip()
-            if decoded:
-                return decoded
-        except:
-            pass
-
-        # Пробуем UTF-8
-        try:
-            decoded = byte_string.decode('utf-8').strip()
-            if decoded:
-                return decoded
-        except:
-            pass
-
-        # Пробуем ASCII
-        try:
-            decoded = byte_string.decode('ascii').strip()
-            if decoded:
-                return decoded
-        except:
-            pass
-
-        # Если не удалось декодировать, возвращаем как hex-строку
-        return byte_string.hex()
-    except:
-        return str(byte_array)
-
-
-def decode_tlv_records(tlv_records: list[dict]) -> list[dict]:
-    """
-    Декодирует значения TLV-записей в читаемый вид.
-    Преобразует массивы байтов в строки для текстовых полей.
-    """
-    if not tlv_records:
-        return tlv_records
-
-    decoded_records = []
-    for record in tlv_records:
-        decoded_record = record.copy()
-        tag_value = record.get('tag_value')
-        tag_type = record.get('tag_type')
-
-        # tag_type == 1 это LIBFPTR_TAG_TYPE_STRING (байтовый массив, обычно текст)
-        # tag_type == 4 это LIBFPTR_TAG_TYPE_BITS (битовая маска)
-        # tag_type == 6 это LIBFPTR_TAG_TYPE_VLN (переменная длина число)
-        # tag_type == 7 это LIBFPTR_TAG_TYPE_UINT_16 (16-битное число)
-        # tag_type == 8 это LIBFPTR_TAG_TYPE_UINT_32 (32-битное число)
-        # tag_type == 9 это LIBFPTR_TAG_TYPE_UNIXTIME (Unix timestamp)
-
-        if tag_type == 1 and isinstance(tag_value, list):
-            # Декодируем байтовый массив в строку
-            decoded_record['tag_value'] = decode_bytes_to_string(tag_value)
-            decoded_record['tag_value_raw'] = tag_value  # Сохраняем исходные байты
-        elif tag_type == 4 and isinstance(tag_value, list):
-            # Для битовых масок показываем hex
-            decoded_record['tag_value'] = bytes(tag_value).hex()
-            decoded_record['tag_value_raw'] = tag_value
-        elif tag_type in (6, 7, 8) and isinstance(tag_value, list):
-            # VLN, UINT_16, UINT_32 - декодируем в число (little-endian)
-            try:
-                num_value = int.from_bytes(bytes(tag_value), byteorder='little', signed=False)
-                decoded_record['tag_value'] = num_value
-                decoded_record['tag_value_raw'] = tag_value
-            except:
-                # Если не удалось декодировать, оставляем как есть
-                pass
-        elif tag_type == 9 and isinstance(tag_value, list):
-            # UNIX_TIME - декодируем в timestamp и дату
-            try:
-                timestamp = int.from_bytes(bytes(tag_value), byteorder='little', signed=False)
-                import datetime
-                dt = datetime.datetime.fromtimestamp(timestamp)
-                decoded_record['tag_value'] = timestamp
-                decoded_record['tag_value_datetime'] = dt.isoformat()
-                decoded_record['tag_value_raw'] = tag_value
-            except:
-                decoded_record['tag_value_raw'] = tag_value
-
-        decoded_records.append(decoded_record)
-
-    return decoded_records
-
-
 async def read_fn_document(
     request: ReadFnDocumentRequestDTO,
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
+    """
+    Читает фискальный документ из ФН с полным разбором всех вложенных структур.
+
+    Все TLV-записи парсятся рекурсивно, включая составные реквизиты (STLV).
+    Для каждого тега возвращается:
+    - tag_number: номер реквизита
+    - tag_name: название реквизита (человекочитаемое)
+    - tag_type: тип реквизита
+    - tag_value: декодированное значение (строка, число, дата и т.д.)
+    - tag_value_raw: сырое значение в байтах
+    - is_complex: флаг составного реквизита
+    - is_repeatable: флаг повторяющегося реквизита
+    - nested_records: список вложенных тегов (для составных реквизитов)
+    """
     command = {
         "device_id": device_id,
         "command": "read_fn_document",
@@ -124,15 +46,12 @@ async def read_fn_document(
     channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
-    # Декодируем TLV-записи для читаемости
-    data = response.get('data')
-    if data and 'tlv_records' in data:
-        data['tlv_records'] = decode_tlv_records(data['tlv_records'])
-
+    # Теперь вся обработка и декодирование происходит в queue worker,
+    # включая рекурсивный парсинг вложенных структур
     return BaseResponseDTO(
         success=response.get('success'),
         message=response.get('message'),
-        data=data,
+        data=response.get('data'),
     )
 
 
@@ -161,6 +80,11 @@ async def read_registration_document(
     device_id: str = Query("default", description="Идентификатор фискального регистратора"),
     redis: Redis = Depends(get_redis)
 ):
+    """
+    Читает документ регистрации из ФН с полным разбором всех вложенных структур.
+
+    Все TLV-записи парсятся рекурсивно, включая составные реквизиты (STLV).
+    """
     command = {
         "device_id": device_id,
         "command": "read_registration_document",
@@ -172,15 +96,11 @@ async def read_registration_document(
     channel = f"command_fr_channel_{device_id}"
     response = await pubsub_command_util(redis, channel, command)
 
-    # Декодируем TLV-записи для читаемости
-    data = response.get('data')
-    if data and 'tlv_records' in data:
-        data['tlv_records'] = decode_tlv_records(data['tlv_records'])
-
+    # Теперь вся обработка и декодирование происходит в queue worker
     return BaseResponseDTO(
         success=response.get('success'),
         message=response.get('message'),
-        data=data,
+        data=response.get('data'),
     )
 
 
